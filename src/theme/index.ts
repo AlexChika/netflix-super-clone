@@ -16,10 +16,13 @@ const GlobalStyle = createGlobalStyle`
 
 html {
   font-size: 62.5%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body{
 font-size: 1.6rem;
+background-color: #f3f3f3;
+direction: ltr;
 }
 
  img{
@@ -34,10 +37,28 @@ font-size: 1.6rem;
       cursor: pointer;
     }
 
-.red{
-    border: 2px solid red;
 
-}
+    /* utilities */
+    .f{
+      display:flex;
+    }
+    .justify-center{
+      justify-content:center;
+    }
+    .items-center{
+      align-items:center;
+    }
+
+
+   .red{
+    border: 2px solid red;
+   }
+  .blue{
+    border: 2px solid blue;
+  }
+  .green{
+    border: 2px solid green;
+  }
 `;
 
 export default GlobalStyle;

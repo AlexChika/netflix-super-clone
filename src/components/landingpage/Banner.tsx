@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import getImage from "../../utils/hooks/getImages";
 import { NetflixLogo } from "../../utils/icons";
+import { TfiAngleRight } from "react-icons/tfi";
 
 const { BannerHeroImage } = getImage();
 
@@ -30,7 +31,9 @@ const Banner = () => {
 
           <form>
             <input placeholder="Email address" type="email" name="email" />
-            <button type="submit">Get Started {">"}</button>
+            <button className="f items-center justify-center" type="submit">
+              Get Started &nbsp; <TfiAngleRight />
+            </button>
           </form>
         </div>
       </div>
@@ -42,6 +45,7 @@ export default Banner;
 const Wrapper = styled.div`
   position: relative;
   height: max-content;
+  border-bottom: 8px solid #222;
 
   .banner__image__wrapper {
     position: absolute;
@@ -62,7 +66,7 @@ const Wrapper = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 20px;
+      padding: 20px;
       height: 85px;
       width: 100%;
 
@@ -87,16 +91,8 @@ const Wrapper = styled.div`
       align-items: center;
       height: calc(100% - 85px);
       text-align: center;
-      padding: 0px 20px 20px 20px;
-
-      h1 {
-        font-size: clamp(1.2rem, 8vw, 4rem);
-      }
-
-      h3 {
-        font-size: clamp(1rem, 5vw, 2.2rem);
-        margin-top: 20px;
-      }
+      /* padding: 0px 20px 20px 20px; */
+      padding: 50px 20px;
 
       form {
         display: flex;
@@ -107,7 +103,7 @@ const Wrapper = styled.div`
 
       input {
         width: 100%;
-        height: 45px;
+        height: 55px;
         background-color: white;
         font-size: 16px;
         padding: 0px 15px;
@@ -134,6 +130,10 @@ const Wrapper = styled.div`
     height: 100vh;
 
     .banner__content__wrapper {
+      .landing__page__nav {
+        padding: 40px 50px;
+      }
+
       .banner__content {
         justify-content: center;
 
