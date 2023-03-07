@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Banner from "../components/landingpage/Banner";
 import ChildrenProfile from "../components/landingpage/ChildrenProfile";
 import DownloadOffline from "../components/landingpage/DownloadOffline";
+import LandingPageFaqs from "../components/landingpage/LandingPageFaqs";
 import WatchEveryWhere from "../components/landingpage/WatchEveryWhere";
 import WatchOnTv from "../components/landingpage/WatchOnTv";
 
@@ -13,7 +14,7 @@ const LandingPage = () => {
       <DownloadOffline />
       <WatchEveryWhere />
       <ChildrenProfile />
-      {/* fags */}
+      <LandingPageFaqs />
     </Wrapper>
   );
 };
@@ -22,7 +23,7 @@ export default LandingPage;
 const Wrapper = styled.div`
   /* general styles */
 
-  h1 {
+  h2 {
     font-size: clamp(1.2rem, 8vw, 4.8rem);
     max-width: 600px;
   }

@@ -7,7 +7,7 @@ const WatchOnTv = () => {
   return (
     <Wrapper>
       <div className="text__wrapper">
-        <h1>Enjoy on your TV.</h1>
+        <h2>Enjoy on your TV.</h2>
         <h3>
           Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray
           players, and more.

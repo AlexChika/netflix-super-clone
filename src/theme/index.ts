@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing:border-box;
     font-weight:400;
     -webkit-tap-highlight-color: transparent;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 html {

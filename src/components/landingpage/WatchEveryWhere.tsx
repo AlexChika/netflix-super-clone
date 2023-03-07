@@ -6,7 +6,7 @@ const WatchEveryWhere = () => {
   return (
     <Wrapper>
       <div className="text__wrapper">
-        <h1>Watch everywhere.</h1>
+        <h2>Watch everywhere.</h2>
         <h3>
           Stream unlimited films and TV programmes on your phone, tablet, laptop
           and TV without paying more.

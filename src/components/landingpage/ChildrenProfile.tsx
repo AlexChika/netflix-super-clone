@@ -6,7 +6,7 @@ const ChildrenProfile = () => {
   return (
     <Wrapper>
       <div className="text__wrapper">
-        <h1>Create profiles for children.</h1>
+        <h2>Create profiles for children.</h2>
         <h3>
           Send children on adventures with their favourite characters in a space
           made just for them {"–"} free with your membership.

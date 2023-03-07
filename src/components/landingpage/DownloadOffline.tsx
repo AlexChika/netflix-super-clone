@@ -33,7 +33,7 @@ const DownloadOffline = () => {
       </div>
 
       <div className="text__wrapper">
-        <h1>Download your shows to watch offline.</h1>
+        <h2>Download your shows to watch offline.</h2>
         <h3>Save your favorites easily and always have something to watch.</h3>
       </div>
     </Wrapper>
