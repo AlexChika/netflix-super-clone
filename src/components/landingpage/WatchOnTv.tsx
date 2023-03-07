@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import getImage from "../../utils/hooks/getImages";
-// import WatchTvVideo from "../../Assets/watch-tv-video.m"
 
 const { WatchTvImage } = getImage();
 
@@ -38,7 +37,6 @@ const WatchOnTv = () => {
 export default WatchOnTv;
 
 const Wrapper = styled.div`
-  height: 100vh;
   border-bottom: 8px solid #222;
   background-color: #000000;
   display: flex;
