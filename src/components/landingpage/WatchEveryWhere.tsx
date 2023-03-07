@@ -1,22 +1,21 @@
 import styled from "styled-components";
 import getImage from "../../utils/hooks/getImages";
+const { WatchEveryWhereImage } = getImage();
 
-const { WatchTvImage } = getImage();
-
-const WatchOnTv = () => {
+const WatchEveryWhere = () => {
   return (
     <Wrapper>
       <div className="text__wrapper">
-        <h1>Enjoy on your TV.</h1>
+        <h1>Watch everywhere.</h1>
         <h3>
-          Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray
-          players, and more.
+          Stream unlimited films and TV programmes on your phone, tablet, laptop
+          and TV without paying more.
         </h3>
       </div>
 
       <div className="image__video__wrapper">
         <div className="image__wrapper">
-          <img src={WatchTvImage} alt="watch television" />
+          <img src={WatchEveryWhereImage} alt="watch television" />
         </div>
 
         <div className="video__wrapper">
@@ -26,7 +25,7 @@ const WatchOnTv = () => {
             loop
             playsInline
             className=""
-            src="/watch-tv-video.m4v"
+            src="/watch-everywhere-video.m4v"
           ></video>
         </div>
       </div>
@@ -34,7 +33,7 @@ const WatchOnTv = () => {
   );
 };
 
-export default WatchOnTv;
+export default WatchEveryWhere;
 
 const Wrapper = styled.div`
   border-bottom: 8px solid #222;
@@ -49,20 +48,19 @@ const Wrapper = styled.div`
   padding: 50px 20px;
 
   .text__wrapper {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
 
   .image__video__wrapper {
     position: relative;
 
     .image__wrapper {
-      display: relative;
+      position: relative;
       aspect-ratio: 16/9;
+      z-index: 3;
 
       img {
-        width: 75%;
-        position: sticky;
-        z-index: 3;
+        width: 80%;
       }
     }
 
@@ -79,8 +77,8 @@ const Wrapper = styled.div`
 
       video {
         aspect-ratio: 16/9;
-        height: calc(100% - 46%);
-        margin-top: -15px;
+        height: calc(100% - 50%);
+        margin-top: -16%;
       }
     }
   }

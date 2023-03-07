@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Banner from "../components/landingpage/Banner";
 import DownloadOffline from "../components/landingpage/DownloadOffline";
+import WatchEveryWhere from "../components/landingpage/WatchEveryWhere";
 import WatchOnTv from "../components/landingpage/WatchOnTv";
 
 const LandingPage = () => {
@@ -9,8 +10,7 @@ const LandingPage = () => {
       <Banner />
       <WatchOnTv />
       <DownloadOffline />
-      {/* OfflineAdd */}
-      {/* everywhereAD */}
+      <WatchEveryWhere />
       {/* profile for kidsAD */}
       {/* fags */}
     </Wrapper>

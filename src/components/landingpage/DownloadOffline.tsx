@@ -1,7 +1,5 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import getImage from "../../utils/hooks/getImages";
-import { CgPushDown } from "react-icons/cg";
-// BiCheck;
 const { DownloadOfflineImage, StrangerThingsImage, DownloadAnimationGif } =
   getImage();
 
