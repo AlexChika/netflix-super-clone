@@ -4,6 +4,7 @@ import DownloadOfflineImage from "../../Assets/download-offline-image.jpg";
 import StrangerThingsImage from "../../Assets/stranger-things-image.png";
 import DownloadAnimationGif from "../../Assets/download-animation-gif.gif";
 import WatchEveryWhereImage from "../../Assets/watch-everywhere-image.png";
+import ChildrenProfileImage from "../../Assets/children-profile-image.png";
 
 function getImage() {
   return {
@@ -13,6 +14,7 @@ function getImage() {
     StrangerThingsImage,
     DownloadAnimationGif,
     WatchEveryWhereImage,
+    ChildrenProfileImage,
   };
 }
 
