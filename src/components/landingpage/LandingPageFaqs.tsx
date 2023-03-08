@@ -197,7 +197,7 @@ const Wrapper = styled.div`
 
   h3 {
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 60px;
   }
 
   form {

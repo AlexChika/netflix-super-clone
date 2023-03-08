@@ -54,11 +54,13 @@ const Wrapper = styled.div`
   padding: 50px 20px;
 
   .text__wrapper {
+    order: 1;
   }
 
   .image__animation__wrapper {
     position: relative;
     margin-bottom: 40px;
+    order: 2;
 
     .image__wrapper {
       position: relative;
@@ -114,5 +116,13 @@ const Wrapper = styled.div`
   @media screen and (min-width: 950px) {
     flex-direction: row;
     padding: 50px 30px;
+
+    .text__wrapper {
+      order: 2;
+    }
+
+    .image__animation__wrapper {
+      order: 1;
+    }
   }
 `;

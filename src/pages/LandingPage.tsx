@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Banner from "../components/landingpage/Banner";
 import ChildrenProfile from "../components/landingpage/ChildrenProfile";
 import DownloadOffline from "../components/landingpage/DownloadOffline";
+import Footer from "../components/landingpage/Footer";
 import LandingPageFaqs from "../components/landingpage/LandingPageFaqs";
 import WatchEveryWhere from "../components/landingpage/WatchEveryWhere";
 import WatchOnTv from "../components/landingpage/WatchOnTv";
@@ -15,6 +16,7 @@ const LandingPage = () => {
       <WatchEveryWhere />
       <ChildrenProfile />
       <LandingPageFaqs />
+      <Footer />
     </Wrapper>
   );
 };

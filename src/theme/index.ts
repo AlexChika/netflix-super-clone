@@ -31,11 +31,13 @@ direction: ltr;
         height:100%
     }
 
-    button,input{
+    button,input,a{
       border:none;
       outline:none;
       background-color:transparent;
       cursor: pointer;
+      text-decoration:none;
+      color:inherit;
     }
 
 

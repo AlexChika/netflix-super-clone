@@ -5,16 +5,16 @@ const { ChildrenProfileImage } = getImage();
 const ChildrenProfile = () => {
   return (
     <Wrapper>
+      <div className="image__wrapper">
+        <img src={ChildrenProfileImage} alt="" />
+      </div>
+
       <div className="text__wrapper">
         <h2>Create profiles for children.</h2>
         <h3>
           Send children on adventures with their favourite characters in a space
           made just for them {"–"} free with your membership.
         </h3>
-      </div>
-
-      <div className="image__wrapper">
-        <img src={ChildrenProfileImage} alt="" />
       </div>
     </Wrapper>
   );
@@ -36,9 +36,11 @@ const Wrapper = styled.div`
 
   .text__wrapper {
     margin-bottom: 40px;
+    order: 1;
   }
 
   .image__wrapper {
+    order: 2;
   }
 
   @media screen and (min-width: 950px) {
@@ -47,6 +49,11 @@ const Wrapper = styled.div`
 
     .text__wrapper {
       margin-bottom: 0px;
+      order: 2;
+    }
+
+    .image__wrapper {
+      order: 1;
     }
   }
 `;

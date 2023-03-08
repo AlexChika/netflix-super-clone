@@ -54,6 +54,10 @@ const Wrapper = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
+
+    img {
+      object-fit: cover;
+    }
   }
 
   .banner__content__wrapper {
@@ -91,7 +95,6 @@ const Wrapper = styled.div`
       align-items: center;
       height: calc(100% - 85px);
       text-align: center;
-      /* padding: 0px 20px 20px 20px; */
       padding: 50px 20px;
 
       form {
