@@ -101,14 +101,14 @@ const Question = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 65px;
-  padding: 10px 15px;
+  height: 60px;
+  padding: 7px 15px;
   background-color: #3a3a3a;
   margin-bottom: 1px;
 
   p,
   span {
-    font-size: clamp(1.5rem, 10vw, 1.8rem);
+    font-size: clamp(1.5rem, 2vw, 2rem);
     font-weight: 400;
   }
 
@@ -131,7 +131,7 @@ const Question = styled.div`
 
     p,
     span {
-      font-size: 2.5rem;
+      font-size: clamp(1.6rem, 2vw, 2.5rem);
     }
   }
 `;
@@ -175,7 +175,8 @@ const Answer = styled.div<AnswerType>`
 `;
 
 const QuestionWrapper = styled.div`
-  max-width: 815px;
+  /* max-width: ; */
+  width: clamp(270px, 80%, 815px);
   margin: 0 auto;
   margin-bottom: 10px;
 `;
@@ -197,7 +198,7 @@ const Wrapper = styled.div`
 
   h3 {
     margin: 0 auto;
-    margin-top: 60px;
+    margin-top: 60px !important ;
   }
 
   form {
@@ -222,11 +223,11 @@ const Wrapper = styled.div`
   button {
     background-color: ${({ theme }: { theme: ThemeType }) => theme.primaryRed};
     color: inherit;
-    width: 170px;
+    width: 160px;
     margin: 0 auto;
     margin-top: 20px;
-    height: 45px;
-    font-size: clamp(1.4rem, 25vw, 1.6rem);
+    height: 40px;
+    font-size: clamp(1.4rem, 2vw, 1.6rem);
   }
 
   @media screen and (min-width: 768px) {

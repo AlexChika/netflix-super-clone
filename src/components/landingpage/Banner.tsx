@@ -95,20 +95,24 @@ const Wrapper = styled.div`
       align-items: center;
       height: calc(100% - 85px);
       text-align: center;
-      padding: 50px 20px;
+      padding: 40px 20px;
 
       form {
         display: flex;
         flex-direction: column;
-        width: clamp(280px, 50vw, 900px);
+        width: clamp(280px, 50vw, 700px);
         margin-top: 20px;
+        gap: 10px;
       }
 
       input {
+        background-color: rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        border-radius: 5px;
         width: 100%;
-        height: 55px;
-        background-color: white;
+        height: 50px;
         font-size: 16px;
+
         padding: 0px 15px;
         &&::placeholder {
           color: gray;
@@ -119,11 +123,13 @@ const Wrapper = styled.div`
         background-color: ${({ theme }: { theme: ThemeType }) =>
           theme.primaryRed};
         color: inherit;
-        width: 170px;
+        width: 160px;
         margin: 0 auto;
         margin-top: 20px;
-        height: 45px;
-        font-size: clamp(1.4rem, 25vw, 1.6rem);
+        font-weight: 700;
+        height: 40px;
+        font-size: clamp(1.4rem, 2vw, 1.8rem);
+        border-radius: 5px;
       }
     }
   }
@@ -147,7 +153,7 @@ const Wrapper = styled.div`
         }
 
         input {
-          height: 65px;
+          height: 55px;
         }
 
         button {

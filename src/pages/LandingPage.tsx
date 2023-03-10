@@ -24,7 +24,6 @@ const LandingPage = () => {
 export default LandingPage;
 const Wrapper = styled.div`
   /* general styles */
-
   h2 {
     font-size: clamp(1.2rem, 8vw, 4.8rem);
     max-width: 600px;
