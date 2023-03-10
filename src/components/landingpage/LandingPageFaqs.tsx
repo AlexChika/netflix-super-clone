@@ -204,6 +204,7 @@ const Wrapper = styled.div`
   form {
     display: flex;
     flex-direction: column;
+    gap: 10px;
     width: clamp(280px, 50vw, 900px);
     margin: 0 auto;
     margin-top: 30px;
@@ -211,8 +212,10 @@ const Wrapper = styled.div`
 
   input {
     width: 100%;
-    height: 55px;
-    background-color: white;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
     font-size: 16px;
     padding: 0px 15px;
     &&::placeholder {
@@ -227,6 +230,7 @@ const Wrapper = styled.div`
     margin: 0 auto;
     margin-top: 20px;
     height: 40px;
+    border-radius: 5px;
     font-size: clamp(1.4rem, 2vw, 1.6rem);
   }
 
