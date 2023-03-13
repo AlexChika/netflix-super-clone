@@ -152,9 +152,9 @@ const Wrapper = styled.div`
   background-color: #000000;
   padding: 50px 20px;
   color: rgba(255, 255, 255, 0.7);
+  padding: 50px 20px;
 
   .content {
-    max-width: 815px;
     margin: 0 auto;
   }
 
@@ -173,6 +173,8 @@ const Wrapper = styled.div`
     flex-direction: column;
     justify-content: space-between;
     gap: 30px;
+    margin: 0 auto;
+    margin-top: 40px;
 
     .partA,
     .partB {
@@ -218,6 +220,10 @@ const Wrapper = styled.div`
   }
 
   @media screen and (min-width: 1000px) {
+    .content {
+      max-width: 1000px;
+    }
+
     section {
       flex-direction: row;
     }
