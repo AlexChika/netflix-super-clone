@@ -27,6 +27,7 @@ const Wrapper = styled.div`
   h2 {
     font-size: clamp(1.2rem, 8vw, 4.8rem);
     max-width: 600px;
+    font-weight: 700;
   }
 
   h3 {

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import getImage from "../../utils/hooks/getImages";
 import { NetflixLogo } from "../../utils/icons";
-import { TfiAngleRight } from "react-icons/tfi";
+import Form from "./Form";
 
 const { BannerHeroImage } = getImage();
 
@@ -29,12 +29,7 @@ const Banner = () => {
             membership.
           </h3>
 
-          <form>
-            <input placeholder="Email address" type="email" name="email" />
-            <button className="f items-center justify-center" type="submit">
-              Get Started &nbsp; <TfiAngleRight />
-            </button>
-          </form>
+          <Form />
         </div>
       </div>
     </Wrapper>
@@ -97,39 +92,8 @@ const Wrapper = styled.div`
       text-align: center;
       padding: 40px 20px;
 
-      form {
-        display: flex;
-        flex-direction: column;
-        width: clamp(280px, 50vw, 700px);
-        margin-top: 20px;
-        gap: 10px;
-      }
-
-      input {
-        background-color: rgba(0, 0, 0, 0.5);
-        border: 1px solid rgba(255, 255, 255, 0.7);
-        border-radius: 5px;
-        width: 100%;
-        height: 50px;
-        font-size: 16px;
-
-        padding: 0px 15px;
-        &&::placeholder {
-          color: gray;
-        }
-      }
-
-      button {
-        background-color: ${({ theme }: { theme: ThemeType }) =>
-          theme.primaryRed};
-        color: inherit;
-        width: 160px;
-        margin: 0 auto;
-        margin-top: 20px;
-        font-weight: 700;
-        height: 40px;
-        font-size: clamp(1.4rem, 2vw, 1.8rem);
-        border-radius: 5px;
+      h2 {
+        max-width: 800px;
       }
     }
   }
@@ -145,22 +109,6 @@ const Wrapper = styled.div`
 
       .banner__content {
         justify-content: center;
-
-        form {
-          display: flex;
-          flex-direction: row;
-          margin-top: 20px;
-        }
-
-        input {
-          height: 55px;
-        }
-
-        button {
-          margin-top: 0px;
-          height: 100%;
-          width: 250px;
-        }
       }
     }
   }

@@ -1,6 +1,7 @@
-import styled from "styled-components";
-import { TfiPlus, TfiAngleRight } from "react-icons/tfi";
 import { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
+import { TfiPlus } from "react-icons/tfi";
+import Form from "./Form";
 
 type Faq = {
   question: string;
@@ -60,12 +61,8 @@ const LandingPageFaqs = () => {
       <h3>
         Ready to watch? Enter your email to create or restart your membership.
       </h3>
-      <form>
-        <input placeholder="Email address" type="email" name="email" />
-        <button className="f items-center justify-center" type="submit">
-          Get Started &nbsp; <TfiAngleRight />
-        </button>
-      </form>
+
+      <Form />
     </Wrapper>
   );
 };
@@ -218,56 +215,5 @@ const Wrapper = styled.div`
   h3 {
     margin: 0 auto;
     margin-top: 60px !important ;
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: clamp(280px, 50vw, 900px);
-    margin: 0 auto;
-    margin-top: 30px;
-  }
-
-  input {
-    width: 100%;
-    height: 50px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    border-radius: 5px;
-    font-size: 16px;
-    padding: 0px 15px;
-    &&::placeholder {
-      color: gray;
-    }
-  }
-
-  button {
-    background-color: ${({ theme }: { theme: ThemeType }) => theme.primaryRed};
-    color: inherit;
-    width: 160px;
-    margin: 0 auto;
-    margin-top: 20px;
-    height: 40px;
-    border-radius: 5px;
-    font-size: clamp(1.4rem, 2vw, 1.6rem);
-  }
-
-  @media screen and (min-width: 768px) {
-    form {
-      display: flex;
-      flex-direction: row;
-      margin-top: 20px;
-    }
-
-    input {
-      height: 65px;
-    }
-
-    button {
-      margin-top: 0px;
-      height: 65px;
-      width: 250px;
-    }
   }
 `;
