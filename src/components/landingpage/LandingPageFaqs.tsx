@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TfiClose, TfiPlus, TfiAngleRight } from "react-icons/tfi";
+import { TfiPlus, TfiAngleRight } from "react-icons/tfi";
 import { useEffect, useRef, useState } from "react";
 
 type Faq = {
@@ -7,8 +7,11 @@ type Faq = {
   answer: string;
 };
 
-type AnswerType = {
+type AnswerProp = {
   height?: string;
+};
+type QuestionProp = {
+  show?: boolean;
 };
 
 const faqs: Faq[] = [
@@ -82,10 +85,12 @@ function QuestionAndAnser({ faq: { question, answer } }: { faq: Faq }) {
   //  .........
   return (
     <QuestionWrapper>
-      <Question onClick={() => setShow(!show)}>
+      <Question show={show} onClick={() => setShow(!show)}>
         <p>{question}</p>
 
-        <span>{show ? <TfiClose /> : <TfiPlus />}</span>
+        <span>
+          <TfiPlus />
+        </span>
       </Question>
 
       <Answer height={height} className={show ? "show" : "hide"}>
@@ -97,7 +102,7 @@ function QuestionAndAnser({ faq: { question, answer } }: { faq: Faq }) {
 
 export default LandingPageFaqs;
 
-const Question = styled.div`
+const Question = styled.div<QuestionProp>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -105,6 +110,10 @@ const Question = styled.div`
   padding: 7px 15px;
   background-color: #3a3a3a;
   margin-bottom: 1px;
+  transition: background-color 0.2s linear;
+  &:hover {
+    background-color: #686767;
+  }
 
   p,
   span {
@@ -124,6 +133,9 @@ const Question = styled.div`
     margin-left: 5px;
     padding: 5px;
     cursor: pointer;
+    transition: transform 0.25s linear;
+    transform: ${({ show }: QuestionProp) =>
+      show ? `rotate(45deg)` : `rotate(0)`};
   }
 
   @media screen and (min-width: 768px) {
@@ -136,29 +148,36 @@ const Question = styled.div`
   }
 `;
 
-const Answer = styled.div<AnswerType>`
+const Answer = styled.div<AnswerProp>`
   background-color: #3a3a3a;
   overflow: hidden;
+  transition: height 0.3s linear, padding 0.3s linear;
 
   p {
     font-size: clamp(1.5rem, 10vw, 1.8rem);
     text-align: left;
     line-height: 3rem;
     font-weight: 400;
+    opacity: 0;
+    transition: opacity 0.3s linear;
   }
 
   &.show {
-    height: ${({ height }) => height};
+    height: ${({ height }: AnswerProp) => height};
     padding: 10px 15px;
-    visibility: visible;
+
+    p {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 
   &.hide {
     padding: 0;
     height: 0;
-    transition: height 0.3s linear, padding 0.3s linear;
     p {
       visibility: hidden;
+      opacity: 0;
     }
   }
 
