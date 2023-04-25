@@ -2,6 +2,7 @@ import styled from "styled-components";
 import getImage from "../../utils/hooks/getImages";
 import { NetflixLogo } from "../../utils/icons";
 import Form from "./Form";
+// import Nav from "../general/Nav";
 
 const { BannerHeroImage } = getImage();
 
@@ -20,6 +21,8 @@ const Banner = () => {
 
           <button>Sign in</button>
         </nav>
+
+        {/* <Nav /> */}
 
         <div className="banner__content">
           <h2>Unlimited movies, TV shows, and more.</h2>
@@ -57,7 +60,7 @@ const Wrapper = styled.div`
 
   .banner__content__wrapper {
     color: white;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.6);
     height: 100%;
     width: 100%;
 
@@ -93,7 +96,7 @@ const Wrapper = styled.div`
       padding: 40px 20px;
 
       h2 {
-        max-width: 800px;
+        max-width: max-content;
       }
     }
   }
@@ -109,6 +112,14 @@ const Wrapper = styled.div`
 
       .banner__content {
         justify-content: center;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .banner__content__wrapper {
+      .landing__page__nav {
+        padding: 40px 70px;
       }
     }
   }
