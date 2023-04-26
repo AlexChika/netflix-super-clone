@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 const Store = configureStore({
   reducer: {
-    counter: () => {},
+    counter: () => ({ name: "hello" }),
   },
 });
 
