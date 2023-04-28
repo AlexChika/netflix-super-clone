@@ -1,8 +1,9 @@
 import { ThemeProvider } from "styled-components";
-import GlobalStyle, { theme } from "./theme";
+import GlobalStyle, { theme } from "../theme";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import LandingPage from "./pages/LandingPage";
-import ErrorPage from "./pages/error/Error";
+import LandingPage from "./LandingPage";
+import ProfilesPage from "./ProfilesPage";
+import ErrorPage from "./error/Error";
 
 const router = createBrowserRouter([
   {
@@ -11,9 +12,9 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/hello",
-    element: <div>hello page</div>,
-    errorElement: <h1>we hit error</h1>,
+    path: "/profiles",
+    element: <ProfilesPage />,
+    errorElement: <ErrorPage />,
   },
 ]);
 

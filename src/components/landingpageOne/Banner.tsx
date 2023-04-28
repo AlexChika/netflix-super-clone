@@ -60,7 +60,13 @@ const Wrapper = styled.div`
 
   .banner__content__wrapper {
     color: white;
-    background-color: rgba(0, 0, 0, 0.6);
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.8) 0,
+      rgba(0, 0, 0, 0.4) 50%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
     height: 100%;
     width: 100%;
 
@@ -74,6 +80,7 @@ const Wrapper = styled.div`
 
       .logo {
         width: clamp(9rem, 20vw, 14rem);
+        cursor: pointer;
       }
 
       button {

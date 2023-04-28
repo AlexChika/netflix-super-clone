@@ -25,6 +25,7 @@ const Wrapper = styled.nav`
 
   .logo {
     width: clamp(9rem, 20vw, 14rem);
+    cursor: pointer;
   }
 
   button {

@@ -81,7 +81,7 @@ const FormWrapper = styled.form<DataProp>`
       top: 50%;
       transform: translateY(-50%);
       left: 15px;
-      color: gray;
+      color: rgba(255, 255, 255, 0.7);
       transition: all 0.3s linear;
       visibility: ${({ data }: DataProp) =>
         data.inputEmail ? "hidden" : "visible"};
