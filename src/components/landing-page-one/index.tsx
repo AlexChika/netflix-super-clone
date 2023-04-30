@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Banner from "./Banner";
 import ChildrenProfile from "./ChildrenProfile";
 import DownloadOffline from "./DownloadOffline";
-import Footer from "./Footer";
+import Footer from "../general/Footer";
 import LandingPageFaqs from "./LandingPageFaqs";
 import WatchEveryWhere from "./WatchEveryWhere";
 import WatchOnTv from "./WatchOnTv";

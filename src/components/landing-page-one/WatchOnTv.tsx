@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import getImage from "../../utils/hooks/getImages";
 
-const { WatchTvImage } = getImage();
+const { WatchTvImage1 } = getImage();
 
 const WatchOnTv = () => {
   return (
@@ -16,7 +16,7 @@ const WatchOnTv = () => {
 
       <div className="image__video__wrapper">
         <div className="image__wrapper">
-          <img src={WatchTvImage} alt="watch television" />
+          <img src={WatchTvImage1} alt="watch television" />
         </div>
 
         <div className="video__wrapper">

@@ -1,20 +1,21 @@
-// import { useState } from "react";
+import { useState } from "react";
 import LandingPageOne from "../components/landing-page-one";
-// import LandingPageTwo from "../components/landing-page-two";
+import LandingPageTwo from "../components/landing-page-two";
+import LandingPageThree from "../components/landing-page-three";
 
 const LandingPage = () => {
-  // const [num, setNum] = useState(Math.floor(Math.random() * 3));
+  // const [num] = useState(Math.floor(Math.random() * 3));
+  const [num] = useState(1);
 
-  return <LandingPageOne />;
-  // return (
-  //   <>
-  //     {num === 0 && <LandingPageOne />}
+  return (
+    <>
+      {num === 0 && <LandingPageOne />}
 
-  //     {num === 1 &&  <LandingPageTwo />}
+      {num === 1 && <LandingPageTwo />}
 
-  //     {num === 2 &&  <LandingPageTwo />}
-  //   </>
-  // );
+      {num === 2 && <LandingPageThree />}
+    </>
+  );
 };
 
 export default LandingPage;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import getImage from "../../utils/hooks/getImages";
-const { WatchEveryWhereImage } = getImage();
+const { WatchEveryWhereImage1 } = getImage();
 
 const WatchEveryWhere = () => {
   return (
@@ -15,7 +15,7 @@ const WatchEveryWhere = () => {
 
       <div className="image__video__wrapper">
         <div className="image__wrapper">
-          <img src={WatchEveryWhereImage} alt="watch television" />
+          <img src={WatchEveryWhereImage1} alt="watch television" />
         </div>
 
         <div className="video__wrapper">

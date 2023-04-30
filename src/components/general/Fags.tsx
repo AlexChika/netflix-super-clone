@@ -151,7 +151,7 @@ const Answer = styled.div<AnswerProp>`
 `;
 
 const FagsWrapper = styled.div`
-  width: clamp(270px, 90%, 969px);
+  width: clamp(270px, 90%, 1065px);
   margin: 0 auto;
   margin-bottom: 10px;
 `;

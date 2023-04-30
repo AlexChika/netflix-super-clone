@@ -3,13 +3,13 @@ import getImage from "../../utils/hooks/getImages";
 import Form from "../general/Form";
 import Nav from "../general/Nav";
 
-const { BannerHeroImage } = getImage();
+const { BannerImage1 } = getImage();
 
 const Banner = () => {
   return (
     <Wrapper role="banner">
       <div className="banner__image__wrapper">
-        <img src={BannerHeroImage} alt="banner" />
+        <img src={BannerImage1} alt="landing page banner" />
       </div>
 
       <div className="banner__content__wrapper">
@@ -61,29 +61,6 @@ const Wrapper = styled.div`
     height: 100%;
     width: 100%;
 
-    .landing__page__nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-      height: 85px;
-      width: 100%;
-
-      .logo {
-        width: clamp(9rem, 20vw, 14rem);
-        cursor: pointer;
-      }
-
-      button {
-        background-color: ${({ theme }: { theme: ThemeType }) =>
-          theme.primaryRed};
-        border-radius: 4px;
-        padding: 8px 15px;
-        color: inherit;
-        font-size: clamp(1.4rem, 25vw, 1.6rem);
-      }
-    }
-
     .banner__content {
       display: flex;
       flex-direction: column;
@@ -109,20 +86,8 @@ const Wrapper = styled.div`
     height: 100vh;
 
     .banner__content__wrapper {
-      .landing__page__nav {
-        padding: 40px 50px;
-      }
-
       .banner__content {
         justify-content: center;
-      }
-    }
-  }
-
-  @media screen and (min-width: 1200px) {
-    .banner__content__wrapper {
-      .landing__page__nav {
-        padding: 40px 70px;
       }
     }
   }

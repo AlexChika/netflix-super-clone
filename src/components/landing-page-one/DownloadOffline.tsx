@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import getImage from "../../utils/hooks/getImages";
-const { DownloadOfflineImage, StrangerThingsImage, DownloadAnimationGif } =
+const { DownloadOfflineImage1, StrangerThingsImage1, DownloadAnimationGif1 } =
   getImage();
 
 const DownloadOffline = () => {
@@ -8,14 +8,14 @@ const DownloadOffline = () => {
     <Wrapper>
       <div className="image__animation__wrapper">
         <div className="image__wrapper">
-          <img src={DownloadOfflineImage} alt="download offline" />
+          <img src={DownloadOfflineImage1} alt="download offline" />
         </div>
 
         <div className="animation__wrapper">
           <div className="animation__box">
             {/* movie image */}
             <div className="movie__image">
-              <img src={StrangerThingsImage} alt="strager things" />
+              <img src={StrangerThingsImage1} alt="strager things" />
             </div>
 
             {/* movie name content */}
@@ -26,7 +26,7 @@ const DownloadOffline = () => {
 
             {/* animation gif */}
             <div className="gif__image">
-              <img src={DownloadAnimationGif} alt="" />
+              <img src={DownloadAnimationGif1} alt="" />
             </div>
           </div>
         </div>

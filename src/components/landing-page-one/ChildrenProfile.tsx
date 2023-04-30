@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import getImage from "../../utils/hooks/getImages";
-const { ChildrenProfileImage } = getImage();
+const { ChildrenProfileImage1 } = getImage();
 
 const ChildrenProfile = () => {
   return (
     <Wrapper>
       <div className="image__wrapper">
-        <img src={ChildrenProfileImage} alt="" />
+        <img src={ChildrenProfileImage1} alt="" />
       </div>
 
       <div className="text__wrapper">

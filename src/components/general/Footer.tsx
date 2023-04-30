@@ -17,7 +17,8 @@ const Footer = () => {
   return (
     <Wrapper>
       <div className="content">
-        <p className="heading">
+        {/* heading */}
+        <p>
           Questions? call <a href="tel:+2349024783759">+2349024783759</a>
         </p>
 
@@ -150,16 +151,11 @@ export default Footer;
 const Wrapper = styled.div`
   border-bottom: 8px solid #222;
   background-color: #000000;
-  padding: 50px 20px;
   color: rgba(255, 255, 255, 0.7);
   padding: 50px 20px;
 
   .content {
     margin: 0 auto;
-  }
-
-  .heading {
-    padding: 0px 30px;
   }
 
   .icon {
@@ -183,6 +179,7 @@ const Wrapper = styled.div`
       width: 100%;
       padding: 0px 30px;
       justify-content: flex-start;
+      gap: 30px;
 
       span {
         display: flex;
@@ -201,10 +198,13 @@ const Wrapper = styled.div`
 
   @media screen and (min-width: 600px) {
     section {
+      gap: 50px;
+
       .partA,
       .partB {
         flex-direction: row;
-        gap: 100px;
+        justify-content: space-between;
+        padding: 0px;
 
         div {
           margin-bottom: 30px;
@@ -221,11 +221,15 @@ const Wrapper = styled.div`
 
   @media screen and (min-width: 1000px) {
     .content {
-      max-width: 1000px;
+      max-width: 1065px;
     }
 
     section {
       flex-direction: row;
     }
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding: 50px 0px;
   }
 `;

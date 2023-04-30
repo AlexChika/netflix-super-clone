@@ -67,7 +67,6 @@ export default Form;
 
 const FormWrapper = styled.form<DataProp>`
   width: clamp(280px, 70vw, 600px);
-  margin: 0 auto;
   margin-top: 30px;
   text-align: left;
   display: flex;
