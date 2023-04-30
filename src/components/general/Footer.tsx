@@ -13,9 +13,13 @@ import {
   SiReact,
 } from "react-icons/si";
 
-const Footer = () => {
+type FooterProp = {
+  bg: string;
+};
+
+const Footer = ({ bg = "rgba(0, 8, 29, 1)" }: { bg?: string }) => {
   return (
-    <Wrapper>
+    <Wrapper bg={bg}>
       <div className="content">
         {/* heading */}
         <p>
@@ -148,9 +152,8 @@ const Footer = () => {
 
 export default Footer;
 
-const Wrapper = styled.div`
-  border-bottom: 8px solid #222;
-  background-color: #000000;
+const Wrapper = styled.div<FooterProp>`
+  background-color: ${({ bg }) => bg};
   color: rgba(255, 255, 255, 0.7);
   padding: 50px 20px;
 

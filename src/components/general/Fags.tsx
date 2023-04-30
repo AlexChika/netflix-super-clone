@@ -9,13 +9,22 @@ type Faq = {
 
 type AnswerProp = {
   height?: string;
+  bg?: string;
 };
 
 type QuestionProp = {
   show?: boolean;
+  bg?: string;
+  hover?: string;
 };
 
-function Fags({ faq: { question, answer } }: { faq: Faq }) {
+type FaqProps = {
+  faq: Faq;
+  bg?: string;
+  hover?: string;
+};
+
+function Fags({ faq: { question, answer }, bg, hover }: FaqProps) {
   const [show, setShow] = useState(false);
   const [height, setHeight] = useState("");
   const ParagraphRef = useRef<null | HTMLParagraphElement>(null);
@@ -37,7 +46,12 @@ function Fags({ faq: { question, answer } }: { faq: Faq }) {
   //  .........
   return (
     <FagsWrapper>
-      <Question show={show} onClick={() => setShow(!show)}>
+      <Question
+        show={show}
+        bg={bg}
+        hover={hover}
+        onClick={() => setShow(!show)}
+      >
         <p>{question}</p>
 
         <span>
@@ -45,7 +59,7 @@ function Fags({ faq: { question, answer } }: { faq: Faq }) {
         </span>
       </Question>
 
-      <Answer height={height} className={show ? "show" : "hide"}>
+      <Answer height={height} bg={bg} className={show ? "show" : "hide"}>
         <p ref={ParagraphRef}>{answer}</p>
       </Answer>
     </FagsWrapper>
@@ -60,11 +74,11 @@ const Question = styled.div<QuestionProp>`
   align-items: center;
   height: 60px;
   padding: 7px 15px;
-  background-color: #3a3a3a;
+  background-color: ${({ bg }: QuestionProp) => bg};
   margin-bottom: 1px;
   transition: background-color 0.2s linear;
   &:hover {
-    background-color: #686767;
+    background-color: ${({ hover }: QuestionProp) => hover};
   }
 
   p,
@@ -151,7 +165,7 @@ const Answer = styled.div<AnswerProp>`
 `;
 
 const FagsWrapper = styled.div`
-  width: clamp(270px, 90%, 1065px);
+  width: clamp(270px, 100%, 1065px);
   margin: 0 auto;
   margin-bottom: 10px;
 `;

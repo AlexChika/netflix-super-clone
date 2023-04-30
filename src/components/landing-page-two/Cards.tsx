@@ -45,8 +45,12 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     justify-content: space-between;
+
+    article:first-of-type {
+      margin-bottom: 25px;
+    }
   }
 
   @media screen and (min-width: 600px) {
@@ -54,6 +58,10 @@ const Wrapper = styled.div`
 
     section {
       flex-direction: row;
+
+      article:first-of-type {
+        margin-bottom: 0px;
+      }
     }
   }
 

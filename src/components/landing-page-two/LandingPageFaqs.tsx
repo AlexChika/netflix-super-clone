@@ -43,11 +43,13 @@ Children's profiles come with PIN-protected parental controls that let you restr
 
 const LandingPageFaqs = () => {
   return (
-    <Wrapper>
+    <Wrapper className="center">
       <h2 className="heading">Frequently Asked Questions</h2>
 
       {faqs.map((faq: Faq, ind) => {
-        return <Fags key={ind} bg="#3a3a3a" hover="#686767" faq={faq} />;
+        return (
+          <Fags key={ind} bg="rgba(19, 33, 68, 1)" hover="#162c64" faq={faq} />
+        );
       })}
 
       <div className="faq__footer">
@@ -63,28 +65,34 @@ const LandingPageFaqs = () => {
 export default LandingPageFaqs;
 
 const Wrapper = styled.div`
-  border-bottom: 8px solid #222;
-  background-color: #000000;
-  align-items: center;
+  max-width: 1065px;
   color: white;
-  text-align: center;
   height: max-content;
   padding: 50px 20px;
 
   .heading {
-    margin: 0 auto;
-    margin-bottom: 50px;
-    max-width: 815px;
+    margin-bottom: 20px;
+    font-size: clamp(1.2rem, 8vw, 4.8rem);
   }
 
   .faq__footer {
     display: flex;
-    align-items: center;
     flex-direction: column;
 
     h3 {
-      margin: 0 auto;
-      margin-top: 60px !important ;
+      margin-top: 20px !important ;
     }
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 0px 50px 30px 50px;
+  }
+
+  @media screen and (min-width: 1065px) {
+    padding: 0px 60px 30px 60px;
+  }
+
+  @media screen and (min-width: 1300px) {
+    padding: 0px;
   }
 `;

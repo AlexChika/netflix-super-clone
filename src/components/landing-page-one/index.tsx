@@ -16,7 +16,7 @@ const LandingPageOne = () => {
       <WatchEveryWhere />
       <ChildrenProfile />
       <LandingPageFaqs />
-      <Footer />
+      <Footer bg="#000000" />
     </Wrapper>
   );
 };
