@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import getImage from "../../utils/hooks/getImages";
-import { NetflixLogo } from "../../utils/icons";
 import Form from "../general/Form";
-// import Nav from "../general/Nav";
+import Nav from "../general/Nav";
 
 const { BannerHeroImage } = getImage();
 
@@ -14,15 +13,7 @@ const Banner = () => {
       </div>
 
       <div className="banner__content__wrapper">
-        <nav className="landing__page__nav">
-          <span>
-            <NetflixLogo class="logo" color="#e50914" />
-          </span>
-
-          <button>Sign in</button>
-        </nav>
-
-        {/* <Nav /> */}
+        <Nav />
 
         <div className="banner__content">
           <h2>Unlimited movies, TV shows, and more.</h2>
