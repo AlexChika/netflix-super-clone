@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+// import React, { useEffect, useState } from "react";
 import Axios, { api_url_Paths } from "../../axios";
-import { log } from "console";
 import styled from "styled-components";
 const name: any = "hello";
 const WhoIsWatching = () => {
   // local states....................
-  const [movie, setMovie] = useState(null);
+  // const [movie, setMovie] = useState(null);
 
   function test() {
     const parsedName = JSON.parse(name);

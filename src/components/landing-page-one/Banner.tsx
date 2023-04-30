@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import getImage from "../../utils/hooks/getImages";
 import { NetflixLogo } from "../../utils/icons";
-import Form from "./Form";
+import Form from "../general/Form";
 // import Nav from "../general/Nav";
 
 const { BannerHeroImage } = getImage();
 
 const Banner = () => {
   return (
-    <Wrapper>
+    <Wrapper role="banner">
       <div className="banner__image__wrapper">
         <img src={BannerHeroImage} alt="banner" />
       </div>
@@ -63,9 +63,9 @@ const Wrapper = styled.div`
     /* background-color: rgba(0, 0, 0, 0.6); */
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.8) 0,
-      rgba(0, 0, 0, 0.4) 50%,
-      rgba(0, 0, 0, 0.8) 100%
+      rgba(0, 0, 0, 0.9) 0,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.9) 100%
     );
     height: 100%;
     width: 100%;
@@ -103,7 +103,12 @@ const Wrapper = styled.div`
       padding: 40px 20px;
 
       h2 {
-        max-width: max-content;
+        max-width: 100%;
+      }
+
+      h3 {
+        font-size: clamp(1rem, 5vw, 2rem);
+        max-width: 85%;
       }
     }
   }

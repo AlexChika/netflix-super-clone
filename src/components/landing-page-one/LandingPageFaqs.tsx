@@ -1,18 +1,10 @@
-import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { TfiPlus } from "react-icons/tfi";
-import Form from "./Form";
+import Form from "../general/Form";
+import Fags from "../general/Fags";
 
 type Faq = {
   question: string;
   answer: string;
-};
-
-type AnswerProp = {
-  height?: string;
-};
-type QuestionProp = {
-  show?: boolean;
 };
 
 const faqs: Faq[] = [
@@ -55,7 +47,7 @@ const LandingPageFaqs = () => {
       <h2 className="heading">Frequently Asked Questions</h2>
 
       {faqs.map((faq: Faq, ind) => {
-        return <QuestionAndAnser key={ind} faq={faq} />;
+        return <Fags key={ind} faq={faq} />;
       })}
 
       <h3>
@@ -67,135 +59,7 @@ const LandingPageFaqs = () => {
   );
 };
 
-function QuestionAndAnser({ faq: { question, answer } }: { faq: Faq }) {
-  const [show, setShow] = useState(false);
-  const [height, setHeight] = useState("");
-  const ParagraphRef = useRef<null | HTMLParagraphElement>(null);
-
-  useEffect(() => {
-    if (ParagraphRef.current)
-      setHeight(
-        `${ParagraphRef.current.getBoundingClientRect().height + 50}px`
-      );
-  }, []);
-
-  //  .........
-  return (
-    <QuestionWrapper>
-      <Question show={show} onClick={() => setShow(!show)}>
-        <p>{question}</p>
-
-        <span>
-          <TfiPlus />
-        </span>
-      </Question>
-
-      <Answer height={height} className={show ? "show" : "hide"}>
-        <p ref={ParagraphRef}>{answer}</p>
-      </Answer>
-    </QuestionWrapper>
-  );
-}
-
 export default LandingPageFaqs;
-
-const Question = styled.div<QuestionProp>`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-  padding: 7px 15px;
-  background-color: #3a3a3a;
-  margin-bottom: 1px;
-  transition: background-color 0.2s linear;
-  &:hover {
-    background-color: #686767;
-  }
-
-  p,
-  span {
-    font-size: clamp(1.5rem, 2vw, 2rem);
-    font-weight: 400;
-  }
-
-  p {
-    text-align: left;
-    margin-right: 5px;
-    width: 80%;
-    justify-self: flex-start;
-  }
-
-  span {
-    display: block;
-    margin-left: 5px;
-    padding: 5px;
-    cursor: pointer;
-    transition: transform 0.25s linear;
-    transform: ${({ show }: QuestionProp) =>
-      show ? `rotate(45deg)` : `rotate(0)`};
-  }
-
-  @media screen and (min-width: 768px) {
-    padding: 10px 30px;
-
-    p,
-    span {
-      font-size: clamp(1.6rem, 2vw, 2.5rem);
-    }
-  }
-`;
-
-const Answer = styled.div<AnswerProp>`
-  background-color: #3a3a3a;
-  overflow: hidden;
-  transition: height 0.3s linear, padding 0.3s linear;
-
-  p {
-    font-size: clamp(1.5rem, 10vw, 1.8rem);
-    text-align: left;
-    line-height: 3rem;
-    font-weight: 400;
-    opacity: 0;
-    transition: opacity 0.3s linear;
-  }
-
-  &.show {
-    height: ${({ height }: AnswerProp) => height};
-    padding: 10px 15px;
-
-    p {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-
-  &.hide {
-    padding: 0;
-    height: 0;
-    p {
-      visibility: hidden;
-      opacity: 0;
-    }
-  }
-
-  @media screen and (min-width: 768px) {
-    padding: 0;
-    &.show {
-      padding: 10px 30px;
-    }
-
-    p {
-      font-size: 2.5rem;
-    }
-  }
-`;
-
-const QuestionWrapper = styled.div`
-  /* max-width: ; */
-  width: clamp(270px, 80%, 815px);
-  margin: 0 auto;
-  margin-bottom: 10px;
-`;
 
 const Wrapper = styled.div`
   border-bottom: 8px solid #222;

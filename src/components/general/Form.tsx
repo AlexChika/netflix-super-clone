@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import { MdOutlineCancel } from "react-icons/md";
-import { TfiAngleRight } from "react-icons/tfi";
+import { MdArrowForwardIos } from "react-icons/md";
+
 import styled from "styled-components";
 
 type DataProp = {
@@ -54,7 +55,8 @@ const Form = () => {
       </div>
 
       <button className="f items-center justify-center" type="submit">
-        Get Started &nbsp; <TfiAngleRight />
+        Get Started
+        <MdArrowForwardIos className="icon" />
       </button>
       {/* </div> */}
     </FormWrapper>
@@ -64,13 +66,12 @@ const Form = () => {
 export default Form;
 
 const FormWrapper = styled.form<DataProp>`
-  width: clamp(280px, 50vw, 900px);
+  width: clamp(280px, 70vw, 600px);
   margin: 0 auto;
   margin-top: 30px;
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 10px;
 
   .input {
     position: relative;
@@ -81,7 +82,7 @@ const FormWrapper = styled.form<DataProp>`
       top: 50%;
       transform: translateY(-50%);
       left: 15px;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.8);
       transition: all 0.3s linear;
       visibility: ${({ data }: DataProp) =>
         data.inputEmail ? "hidden" : "visible"};
@@ -91,7 +92,7 @@ const FormWrapper = styled.form<DataProp>`
       width: 100%;
       height: 50px;
       background-color: rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.6);
       border-radius: 5px;
       font-size: 16px;
       padding: 0px 15px;
@@ -122,27 +123,33 @@ const FormWrapper = styled.form<DataProp>`
     color: inherit;
     width: 160px;
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 10px;
     height: 40px;
     border-radius: 5px;
-    font-size: clamp(1.4rem, 2vw, 1.6rem);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
   }
 
-  @media screen and (min-width: 768px) {
+  .icon {
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+  }
+
+  @media screen and (min-width: 640px) {
     margin-top: 20px;
     display: flex;
     flex-direction: row;
+    gap: 10px;
 
     .input {
       input {
-        height: 65px;
+        height: 60px;
       }
     }
 
     button {
       margin-top: 0px;
-      height: 65px;
-      width: 250px;
+      height: 60px;
+      width: 300px;
+      font-weight: 900;
     }
   }
 `;

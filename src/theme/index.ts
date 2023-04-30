@@ -26,31 +26,34 @@ background-color: #f3f3f3;
 direction: ltr;
 }
 
- img{
+img{
         width:100%;
         height:100%
-    }
+}
 
-    button,input,a{
+button,input,a{
       border:none;
       outline:none;
       background-color:transparent;
       cursor: pointer;
       text-decoration:none;
       color:inherit;
-    }
+}
 
 
     /* utilities */
-    .f{
+.f{
       display:flex;
-    }
-    .justify-center{
+}
+.justify-center{
       justify-content:center;
-    }
-    .items-center{
+}
+.items-center{
       align-items:center;
-    }
+}
+.center{
+      margin:0 auto;
+}
 
 
    .red{

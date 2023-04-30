@@ -1,4 +1,4 @@
-import WhoIsWatching from "../components/whoiswatching";
+import WhoIsWatching from "../components/who-is-watching";
 
 const WhoIsWatchingPage = () => {
   return <WhoIsWatching />;
