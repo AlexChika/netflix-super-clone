@@ -37,9 +37,7 @@ const Banner = () => {
 export default Banner;
 const Wrapper = styled.div`
   position: relative;
-  /* z-index: 5; */
   height: max-content;
-  border-bottom: 8px solid #222;
   background: linear-gradient(
     103.24deg,
     rgba(0, 8, 29, 0.9) 23.83%,
@@ -79,7 +77,7 @@ const Wrapper = styled.div`
       height: calc(100% - 85px);
       max-width: 1065px;
       text-align: center;
-      padding: 0px 10px 20px 10px;
+      padding: 0px 20px 20px 20px;
 
       h2 {
         max-width: 800px;
@@ -90,46 +88,27 @@ const Wrapper = styled.div`
       h3 {
         font-size: clamp(1rem, 5vw, 2.3rem);
         text-align: left;
+        margin-top: 10px;
         max-width: max-content;
-        margin-bottom: 10px;
       }
 
       h4 {
         font-size: clamp(0.9rem, 5vw, 1.9rem);
         text-align: left;
         max-width: max-content;
+        margin-top: 15px;
       }
     }
   }
 
   /* media queries */
-  @media screen and (min-width: 600px) {
-    .banner__content__wrapper {
-      .banner__content {
-        padding: 0px 20px 20px 20px;
-      }
-    }
-  }
-
   @media screen and (min-width: 768px) {
     height: 100vh;
 
     .banner__content__wrapper {
       .banner__content {
         justify-content: center;
-        margin-top: -60px;
-        padding: 0px 30px 30px 30px;
-      }
-    }
-  }
-
-  @media screen and (min-width: 768px) {
-    height: 100vh;
-
-    .banner__content__wrapper {
-      .banner__content {
-        justify-content: center;
-        margin-top: -60px;
+        margin-top: -40px;
         padding: 0px 50px 30px 50px;
       }
     }
@@ -147,7 +126,12 @@ const Wrapper = styled.div`
     .banner__content__wrapper {
       .banner__content {
         padding: 0px;
-        margin-top: -80px;
+        margin-top: -60px;
+
+        h2 {
+          font-size: clamp(1.2rem, 7vw, 6.5rem);
+          font-weight: 800;
+        }
       }
     }
   }

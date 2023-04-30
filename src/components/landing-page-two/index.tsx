@@ -15,17 +15,18 @@ const LandingPageTwo = () => {
 
 export default LandingPageTwo;
 const Wrapper = styled.div`
-  background-color: #a6a6e5;
   /* general styles */
+  background: rgba(0, 8, 29, 1);
+
   h2 {
-    font-size: clamp(1.2rem, 8vw, 4.8rem);
+    font-size: clamp(1.2rem, 4vw, 2.5rem);
     max-width: 600px;
-    font-weight: 700;
+    font-weight: 500;
   }
 
   h3 {
-    font-size: clamp(1rem, 5vw, 2.5rem);
-    margin-top: 20px;
+    font-size: clamp(0.9rem, 2vw, 1.5rem);
+    margin-top: 10px;
     max-width: 600px;
   }
 `;

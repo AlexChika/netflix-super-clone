@@ -197,6 +197,8 @@ const Wrapper = styled.div`
   }
 
   @media screen and (min-width: 600px) {
+    padding: 20px 20px 20px 40px;
+
     section {
       gap: 50px;
 
@@ -219,6 +221,10 @@ const Wrapper = styled.div`
     }
   }
 
+  @media screen and (min-width: 768px) {
+    padding: 20px 50px 30px 50px;
+  }
+
   @media screen and (min-width: 1000px) {
     .content {
       max-width: 1065px;
@@ -229,7 +235,11 @@ const Wrapper = styled.div`
     }
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1065px) {
+    padding: 30px 60px 30px 60px;
+  }
+
+  @media screen and (min-width: 1300px) {
     padding: 50px 0px;
   }
 `;

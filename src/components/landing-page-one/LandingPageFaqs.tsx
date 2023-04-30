@@ -50,11 +50,12 @@ const LandingPageFaqs = () => {
         return <Fags key={ind} faq={faq} />;
       })}
 
-      <h3>
-        Ready to watch? Enter your email to create or restart your membership.
-      </h3>
-
-      <Form />
+      <div className="faq__footer">
+        <h3>
+          Ready to watch? Enter your email to create or restart your membership.
+        </h3>
+        <Form />
+      </div>
     </Wrapper>
   );
 };
@@ -76,8 +77,14 @@ const Wrapper = styled.div`
     max-width: 815px;
   }
 
-  h3 {
-    margin: 0 auto;
-    margin-top: 60px !important ;
+  .faq__footer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    h3 {
+      margin: 0 auto;
+      margin-top: 60px !important ;
+    }
   }
 `;

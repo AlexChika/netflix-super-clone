@@ -22,7 +22,7 @@ html {
 
 body{
 font-size: 1.6rem;
-background-color: #f3f3f3;
+background-color: black;
 direction: ltr;
 }
 
