@@ -39,19 +39,19 @@ const Footer = ({ bg = "rgba(0, 8, 29, 1)" }: { bg?: string }) => {
                 <small>
                   <GoPrimitiveDot />
                 </small>
-                <a href="https://i-am-alex.netlify.app">Alex Chika</a>
+                <a href="https://alex.devarise.tech">Alex Chika</a>
               </span>
               <span>
                 <small>
                   <GoPrimitiveDot />
                 </small>
-                <a href="https://i-am-alex.netlify.app">JavaScript Dev</a>
+                <a href="https://alex.devarise.tech">JavaScript Dev</a>
               </span>
               <span>
                 <small>
                   <GoPrimitiveDot />
                 </small>
-                <a href="https://i-am-alex.netlify.app">Flutter dev</a>
+                <a href="https://alex.devarise.tech">Flutter dev</a>
               </span>
             </div>
 
@@ -80,9 +80,7 @@ const Footer = ({ bg = "rgba(0, 8, 29, 1)" }: { bg?: string }) => {
                 <small>
                   <SlGlobe />
                 </small>
-                <a href="https://i-am-alex.netlify.app">
-                  https://i-am-alex.netlify.app
-                </a>
+                <a href="https://alex.devarise.tech">alex.devarise.tech</a>
               </span>
             </div>
           </div>
@@ -153,7 +151,7 @@ const Footer = ({ bg = "rgba(0, 8, 29, 1)" }: { bg?: string }) => {
 export default Footer;
 
 const Wrapper = styled.div<FooterProp>`
-  background-color: ${({ bg }) => bg};
+  background-color: ${({ bg }: FooterProp) => bg};
   color: rgba(255, 255, 255, 0.7);
   padding: 50px 20px;
 
