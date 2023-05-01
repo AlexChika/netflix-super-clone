@@ -23,7 +23,7 @@ const Banner = () => {
             membership.
           </h3>
 
-          <Form />
+          <Form btnAlign="center" />
         </div>
       </div>
     </Wrapper>

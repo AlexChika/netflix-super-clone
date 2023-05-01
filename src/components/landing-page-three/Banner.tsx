@@ -20,12 +20,16 @@ const Banner = () => {
 
           <h3>Watch anywhere. Cancel anytime.</h3>
 
-          <h4>
-            Ready to watch? Enter your email to create or restart your
-            membership.
-          </h4>
+          <div className="form__wrapper">
+            <div className="form__wrapper__bg">
+              <h4>
+                Ready to watch? Enter your email to create or restart your
+                membership.
+              </h4>
 
-          <Form />
+              <Form />
+            </div>
+          </div>
         </div>
       </div>
     </Wrapper>
@@ -92,12 +96,36 @@ const Wrapper = styled.div`
         margin-top: 10px;
         max-width: max-content;
       }
+    }
+
+    .form__wrapper {
+      max-width: 1065px;
+      width: 100%;
+      margin: 0 auto;
+      margin-top: 25px;
+      background: linear-gradient(0deg, rgba(0, 8, 29, 1), rgba(0, 8, 29, 1))
+          padding-box,
+        linear-gradient(
+            271.65deg,
+            #233371 5.26%,
+            #00197a 50.02%,
+            #e50914 97.68%
+          )
+          border-box;
+      border: 4px solid transparent;
+      border-radius: 8px;
 
       h4 {
         font-size: clamp(0.9rem, 5vw, 1.9rem);
         text-align: left;
         max-width: max-content;
-        margin-top: 20px;
+      }
+
+      .form__wrapper__bg {
+        background: rgba(0, 8, 29, 1);
+        padding: 20px;
+        /* padding: 1.5rem 2.625rem; */
+        border-radius: 8px;
       }
     }
   }
@@ -111,6 +139,10 @@ const Wrapper = styled.div`
         h2 {
           padding: 20px 0px;
         }
+      }
+
+      .form__wrapper {
+        margin-top: 40px;
       }
     }
   }

@@ -8,10 +8,15 @@ type DataProp = {
   data: {
     inputEmail: string;
     isEmailValid: { valid: boolean; errorText: string };
+    btnAlign: "center" | "flex-start";
   };
 };
 
-const Form = () => {
+type FormProp = {
+  btnAlign?: "center" | "flex-start";
+};
+
+const Form = ({ btnAlign = "flex-start" }: FormProp) => {
   const [inputEmail, setInputEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState({
     valid: true,
@@ -38,8 +43,7 @@ const Form = () => {
   }
 
   return (
-    <FormWrapper data={{ inputEmail, isEmailValid }}>
-      {/* <div className="formInput"> */}
+    <FormWrapper data={{ inputEmail, isEmailValid, btnAlign }}>
       <div className="input">
         <p>Email address</p>
         <input
@@ -58,7 +62,6 @@ const Form = () => {
         Get Started
         <MdArrowForwardIos className="icon" />
       </button>
-      {/* </div> */}
     </FormWrapper>
   );
 };
@@ -66,7 +69,7 @@ const Form = () => {
 export default Form;
 
 const FormWrapper = styled.form<DataProp>`
-  width: clamp(280px, 70vw, 600px);
+  width: clamp(230px, 70vw, 600px);
   margin-top: 30px;
   text-align: left;
   display: flex;
@@ -118,10 +121,10 @@ const FormWrapper = styled.form<DataProp>`
   }
 
   button {
+    align-self: ${({ data: { btnAlign } }: DataProp) => btnAlign};
     background-color: ${({ theme }: { theme: ThemeType }) => theme.primaryRed};
     color: inherit;
     width: 160px;
-    margin: 0 auto;
     margin-top: 10px;
     height: 40px;
     border-radius: 5px;

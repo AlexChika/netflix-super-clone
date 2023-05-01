@@ -7,8 +7,7 @@ const LandingPageThree = () => {
   return (
     <Wrapper>
       <Banner />
-      {/* <Cards />
-       */}
+
       <LandingPageFaqs />
       <Footer />
     </Wrapper>
