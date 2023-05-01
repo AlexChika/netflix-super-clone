@@ -72,7 +72,8 @@ const Wrapper = styled.div`
 
   .heading {
     margin-bottom: 20px;
-    font-size: clamp(1.2rem, 8vw, 4.8rem);
+    font-size: clamp(1.8rem, 5vw, 4rem);
+    font-weight: 800;
   }
 
   .faq__footer {

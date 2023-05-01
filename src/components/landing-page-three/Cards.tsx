@@ -26,6 +26,7 @@ const Wrapper = styled.div`
   border-radius: 8px;
   max-width: 1250px;
   margin: 0 auto;
+  margin-bottom: 40px;
   color: white;
 
   section {
@@ -35,15 +36,16 @@ const Wrapper = styled.div`
   }
 
   h2 {
-    font-size: clamp(1.2rem, 5vw, 4.2rem);
+    font-size: clamp(2.5rem, 4.5vw, 4.2rem);
     max-width: 600px;
     font-weight: 800;
   }
 
   h3 {
-    font-size: clamp(1rem, 3vw, 1.8rem);
+    font-size: clamp(1.5rem, 2.5vw, 1.8rem);
     max-width: 600px;
-    font-weight: 600;
+    font-weight: 500;
+    margin-top: 10px;
   }
 
   @media screen and (min-width: 600px) {
@@ -54,6 +56,8 @@ const Wrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     margin-top: -40px;
+    margin-bottom: 100px;
+
     section {
       padding: 0px 50px 30px 50px;
     }
@@ -62,6 +66,10 @@ const Wrapper = styled.div`
   @media screen and (min-width: 1065px) {
     section {
       padding: 0px 60px 30px 60px;
+    }
+
+    h3 {
+      font-weight: 600;
     }
   }
 
