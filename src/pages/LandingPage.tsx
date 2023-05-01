@@ -4,8 +4,8 @@ import LandingPageTwo from "../components/landing-page-two";
 import LandingPageThree from "../components/landing-page-three";
 
 const LandingPage = () => {
-  const [num] = useState(Math.floor(Math.random() * 2));
-  // const [num] = useState(2);
+  // const [num] = useState(Math.floor(Math.random() * 2));
+  const [num] = useState(2);
 
   return (
     <>

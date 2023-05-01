@@ -2,12 +2,13 @@ import styled from "styled-components";
 import Footer from "../general/Footer";
 import Banner from "./Banner";
 import LandingPageFaqs from "../landing-page-two/LandingPageFaqs";
+import Cards from "./Cards";
 
 const LandingPageThree = () => {
   return (
     <Wrapper>
       <Banner />
-
+      <Cards />
       <LandingPageFaqs />
       <Footer />
     </Wrapper>
