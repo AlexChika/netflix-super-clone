@@ -163,7 +163,6 @@ const Wrapper = styled.div<FooterProp>`
 
   .icon {
     font-size: clamp(1rem, 5vw, 2.5rem);
-    margin-bottom: -15px;
     padding: 0;
   }
 

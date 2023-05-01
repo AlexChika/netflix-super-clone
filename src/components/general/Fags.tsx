@@ -120,7 +120,7 @@ const Question = styled.div<QuestionProp>`
 `;
 
 const Answer = styled.div<AnswerProp>`
-  background-color: #3a3a3a;
+  background-color: ${({ bg }: AnswerProp) => bg};
   overflow: hidden;
   transition: height 0.3s linear, padding 0.3s linear;
 
