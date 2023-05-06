@@ -164,6 +164,10 @@ const Wrapper = styled.div<FooterProp>`
     padding: 0;
   }
 
+  h3 {
+    margin: 0 !important;
+  }
+
   section {
     display: flex;
     flex-direction: column;
