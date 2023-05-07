@@ -7,15 +7,19 @@ import DownloadAnimationGif1 from "../../Assets/landing-page-one/download-animat
 import WatchEveryWhereImage1 from "../../Assets/landing-page-one/watch-everywhere-image.png";
 import ChildrenProfileImage1 from "../../Assets/landing-page-one/children-profile-image.png";
 
-// landing page 2 assets
+// landing page 2 & 3 assets
 import BannerImage2 from "../../Assets/landing-page-two/banner-hero-image.jpg";
 import WatchTvImage2 from "../../Assets/landing-page-two/watch-tv-image.png";
 import WatchEveryWhereImage2 from "../../Assets/landing-page-two/watch-everywhere-image.png";
 import ChildrenProfileImage2 from "../../Assets/landing-page-two/children-profile-image.png";
 import DownloadOfflineImage2 from "../../Assets/landing-page-two/download-offline-image.png";
 
+// who is watching
+import PlusIcon from "../../Assets/landing-page-two/download-offline-image.png";
+
 function getImage() {
   return {
+    // landing pages
     BannerImage1,
     BannerImage2,
     WatchTvImage1,
@@ -28,6 +32,8 @@ function getImage() {
     ChildrenProfileImage2,
     DownloadAnimationGif1,
     StrangerThingsImage1,
+    //who is watching
+    PlusIcon,
   };
 }
 
