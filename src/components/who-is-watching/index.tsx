@@ -11,7 +11,7 @@ type BallProp = {
 
 function WhoIsWatching() {
   const [max_watchers] = useState(6);
-  const [watcher, setWatcher] = useState(3);
+  const [watcher, setWatcher] = useState(2);
 
   const handleAddProfile = () => {
     setWatcher(watcher + 1);
@@ -190,6 +190,7 @@ const Ball = styled.div<BallProp>`
       left: 50%;
       transform: translateX(-50%);
       font-size: 1.3rem;
+      font-weight: 500;
       width: max-content;
       color: white;
     }
