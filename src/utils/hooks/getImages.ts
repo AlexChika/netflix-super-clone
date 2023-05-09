@@ -15,7 +15,7 @@ import ChildrenProfileImage2 from "../../Assets/landing-page-two/children-profil
 import DownloadOfflineImage2 from "../../Assets/landing-page-two/download-offline-image.png";
 
 // who is watching
-import PlusIcon from "../../Assets/landing-page-two/download-offline-image.png";
+import PlusIcon from "../../Assets/who-is-watching/plus-icon.png";
 
 function getImage() {
   return {

@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from "react";
-import Axios, { api_url_Paths } from "../../axios";
+import { useState } from "react";
 import styled from "styled-components";
 import watchers from "./data";
 import getImage from "../../utils/hooks/getImages";
+import { TiArrowBack } from "react-icons/ti";
+const { PlusIcon } = getImage();
 
 type BallProp = {
   rotate: number;
 };
 
 function WhoIsWatching() {
-  const { PlusIcon } = getImage();
+  const [max_watchers] = useState(6);
+  const [watcher, setWatcher] = useState(3);
 
   const handleAddProfile = () => {
-    console.log("hello");
+    setWatcher(watcher + 1);
   };
 
   function handleWatchers(index = 3) {
@@ -24,7 +26,7 @@ function WhoIsWatching() {
     let watchersArray = [...watchers].slice(0, index);
     // temporal implementation
 
-    if (watchersArray.length < 3) {
+    if (watchersArray.length < max_watchers) {
       watchersArray = [
         ...watchersArray,
         {
@@ -44,14 +46,16 @@ function WhoIsWatching() {
     };
   }
 
-  const { watchersArray, deg } = handleWatchers(2); //pass in different numbers to test
+  const { watchersArray, deg } = handleWatchers(watcher);
 
   return (
     <Wrapper>
-      {/* Title... => Who is watching */}
-      <h1>Hello here is title</h1>
+      <div className="heading">
+        <TiArrowBack />
+        <h1>Who's watching?</h1>
+      </div>
 
-      <Container>
+      <Container className="">
         {watchersArray.map((watch, index) => {
           return (
             <BallContainer
@@ -87,35 +91,51 @@ function WhoIsWatching() {
 
 export default WhoIsWatching;
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  .heading {
+    position: absolute;
+    top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    svg,
+    h1 {
+      font-weight: 600;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    svg {
+      position: absolute;
+      left: 30px;
+    }
+  }
+`;
 
 const Container = styled.article`
-  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
   width: 100%;
-  height: 330px;
+  aspect-ratio: 1/1;
   position: relative;
   padding: 0;
   margin: 0 auto;
   overflow: hidden;
 
-  @media screen and (min-width: 320px) {
-    height: 370px;
-  }
-
-  @media screen and (min-width: 400px) {
-    height: 450px;
-  }
-
-  @media screen and (min-width: 500px) {
-    height: 500px;
-  }
-
   @media screen and (min-width: 768px) {
-    height: 550px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    height: 600px;
+    max-width: 600px;
   }
 `;
 
@@ -123,8 +143,7 @@ const BallContainer = styled.div<BallProp>`
   position: absolute;
   width: 80%;
   height: 80%;
-  left: 50%;
-  top: 50%;
+  /* border: 1px solid white; */
 
   &.centerBall {
     display: flex;
@@ -132,21 +151,24 @@ const BallContainer = styled.div<BallProp>`
     align-items: center;
   }
 
-  transform: translateX(-50%) translateY(-50%)
-    rotate(${({ rotate }) => `-${rotate}deg`}); //rotate ballContainer
+  transform: rotate(
+    ${({ rotate }: BallProp) => `-${rotate}deg`}
+  ); //rotate ballContainer
+
+  transition: transform 0.7s linear;
 `;
 
 // The Watcher Image Circle
 const Ball = styled.div<BallProp>`
   border-radius: 50%;
-  width: 30%;
-  height: 30%;
-  min-width: 100px;
-  min-height: 100px;
+  width: 25%;
+  height: 25%;
   margin: 0 auto;
 
   .content {
-    transform: rotate(${({ rotate }) => `${rotate}deg`}); //reverse-rotate Ball
+    transform: rotate(
+      ${({ rotate }: BallProp) => `${rotate}deg`}
+    ); //reverse-rotate Ball
 
     position: relative;
     width: 100%;
@@ -156,7 +178,6 @@ const Ball = styled.div<BallProp>`
     border-radius: inherit;
 
     /* .............. */
-
     img {
       width: 100%;
       border-radius: inherit;
@@ -165,37 +186,30 @@ const Ball = styled.div<BallProp>`
 
     p {
       position: absolute;
-      bottom: -40px;
+      bottom: -25px;
       left: 50%;
       transform: translateX(-50%);
       font-size: 1.3rem;
       width: max-content;
-      color: var(--white-color);
+      color: white;
     }
   }
 
   .content.profile {
-    border: 2px solid var(--secondary-color);
     display: flex;
     justify-content: center;
     align-items: center;
 
     img {
-      height: 60px;
-      width: 60px;
+      height: 40%;
+      width: 40%;
     }
-  }
-
-  @media screen and (min-width: 400px) {
-    min-width: 120px;
-    min-height: 120px;
-    width: 34%;
-    height: 34%;
   }
 `;
 
 // The Add Profile Circle Btn
 const BallBtn = styled(Ball)`
+  border: 2px solid white;
   .content {
     cursor: pointer;
     background-color: transparent;
