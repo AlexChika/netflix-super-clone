@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Footer from "../general/Footer";
+import Footer from "../general/landingpages/Footer";
 import Banner from "./Banner";
 import LandingPageFaqs from "../landing-page-two/LandingPageFaqs";
 import Cards from "./Cards";

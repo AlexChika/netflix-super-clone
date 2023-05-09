@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NetflixLogo } from "../../utils/icons";
+import { NetflixLogo } from "../../../utils/icons";
 
 const Nav = () => {
   return (

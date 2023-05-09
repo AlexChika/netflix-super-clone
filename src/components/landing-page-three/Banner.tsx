@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import getImage from "../../utils/hooks/getImages";
-import Form from "../general/Form";
-import Nav from "../general/Nav";
+import Form from "../general/landingpages/Form";
+import Nav from "../general/landingpages/Nav";
 
 const { BannerImage2 } = getImage();
 

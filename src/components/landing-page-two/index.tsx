@@ -1,4 +1,4 @@
-import Footer from "../general/Footer";
+import Footer from "../general/landingpages/Footer";
 import Banner from "./Banner";
 import styled from "styled-components";
 import Cards from "./Cards";

@@ -46,12 +46,16 @@ function WhoIsWatching() {
     };
   }
 
+  function bb() {}
+
   const { watchersArray, deg } = handleWatchers(watcher);
 
   return (
     <Wrapper>
       <div className="heading">
-        <TiArrowBack />
+        <button>
+          <TiArrowBack />
+        </button>
         <h1>Who's watching?</h1>
       </div>
 
@@ -115,7 +119,7 @@ const Wrapper = styled.div`
       font-size: clamp(2rem, 5vw, 3.5rem);
     }
 
-    svg {
+    button {
       position: absolute;
       left: 30px;
     }

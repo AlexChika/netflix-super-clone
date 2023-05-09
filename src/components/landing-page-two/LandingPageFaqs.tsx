@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Form from "../general/Form";
-import Fags from "../general/Fags";
+import Form from "../general/landingpages/Form";
+import Fags from "../general/landingpages/Fags";
 
 type Faq = {
   question: string;
