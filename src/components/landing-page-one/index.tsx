@@ -36,4 +36,15 @@ const Wrapper = styled.div`
     margin-top: 20px;
     max-width: 600px;
   }
+
+  animation: fadeOut 1s linear;
+
+  @keyframes fadeOut {
+    from {
+      opacity: 0.2;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;

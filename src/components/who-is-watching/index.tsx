@@ -46,64 +46,81 @@ function WhoIsWatching() {
     };
   }
 
-  function bb() {}
+  function bb() {
+    window.history.back();
+  }
 
   const { watchersArray, deg } = handleWatchers(watcher);
 
   return (
-    <Wrapper>
-      <div className="heading">
-        <button>
-          <TiArrowBack />
-        </button>
-        <h1>Who's watching?</h1>
-      </div>
+    <Wrapper className="red">
+      <section>
+        <div className="heading">
+          <button type="button" onClick={bb}>
+            <TiArrowBack />
+          </button>
+          <h1>Who's watching?</h1>
+        </div>
 
-      <Container className="">
-        {watchersArray.map((watch, index) => {
-          return (
-            <BallContainer
-              className={`${watchersArray.length === 1 ? "centerBall" : ""}`}
-              key={index}
-              rotate={deg * index}
-            >
-              {watch.addProfile ? (
-                <BallBtn rotate={deg * index}>
-                  <button
-                    onClick={handleAddProfile}
-                    className="content profile"
-                  >
-                    <img src={watch.image} alt={watch.name} />
-                    <p>{watch.name}</p>
-                  </button>
-                </BallBtn>
-              ) : (
-                <Ball rotate={deg * index}>
-                  <div className="content">
-                    <img src={watch.image} alt={watch.name} />
-                    <p>{watch.name}</p>
-                  </div>
-                </Ball>
-              )}
-            </BallContainer>
-          );
-        })}
-      </Container>
+        <Container>
+          {watchersArray.map((watch, index) => {
+            return (
+              <BallContainer
+                className={`${watchersArray.length === 1 ? "centerBall" : ""}`}
+                key={index}
+                rotate={deg * index}
+              >
+                {watch.addProfile ? (
+                  <BallBtn rotate={deg * index}>
+                    <button
+                      onClick={handleAddProfile}
+                      className="content profile"
+                    >
+                      <img src={watch.image} alt={watch.name} />
+                      <p>{watch.name}</p>
+                    </button>
+                  </BallBtn>
+                ) : (
+                  <Ball rotate={deg * index}>
+                    <div className="content">
+                      <img src={watch.image} alt={watch.name} />
+                      <p>{watch.name}</p>
+                    </div>
+                  </Ball>
+                )}
+              </BallContainer>
+            );
+          })}
+        </Container>
+      </section>
     </Wrapper>
   );
 }
 
 export default WhoIsWatching;
 
-const Wrapper = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+const Wrapper = styled.main`
+  animation: fadeOut 1s linear;
+
+  @keyframes fadeOut {
+    from {
+      opacity: 0.2;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  section {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
 
   .heading {
     position: absolute;
