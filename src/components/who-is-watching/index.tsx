@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState, useRef, MouseEvent } from "react";
 import styled from "styled-components";
 import watchers from "./data";
 import getImage from "../../utils/hooks/getImages";
 import { TiArrowBack } from "react-icons/ti";
+// import { useNavigation } from "react-router-dom";
 const { PlusIcon } = getImage();
 
 type BallProp = {
@@ -12,6 +13,12 @@ type BallProp = {
 function WhoIsWatching() {
   const [max_watchers] = useState(6);
   const [watcher, setWatcher] = useState(2);
+  const [watchersArray, setWatchersArray] = useState<Watcher[]>([]);
+  const [deg, setDeg] = useState(0);
+
+  const containerRef = useRef<null | HTMLDivElement>(null);
+
+  // const navigate = useNavigation();
 
   const handleAddProfile = () => {
     setWatcher(watcher + 1);
@@ -40,20 +47,75 @@ function WhoIsWatching() {
 
     let deg = 360 / watchersArray.length;
 
+    setDeg(deg);
+    setWatchersArray(watchersArray);
+
     return {
       watchersArray,
       deg,
     };
   }
 
+  function getCircleCodinate(element: HTMLDivElement) {
+    const left = element.getBoundingClientRect().left;
+    const right = element.getBoundingClientRect().right;
+    const top = element.getBoundingClientRect().top;
+    const bottom = element.getBoundingClientRect().bottom;
+
+    return {
+      left,
+      top,
+      right,
+      bottom,
+    };
+  }
+
+  function getCordinates(e: MouseEvent) {
+    if (!containerRef.current) return;
+    let container = containerRef.current;
+
+    const profileBalls = [
+      ...container.querySelectorAll<HTMLDivElement>(`[data-id="ball"]`),
+    ]; //all balls
+    const profileBallCordinates = profileBalls.map((ball: HTMLDivElement) => {
+      return getCircleCodinate(ball);
+    }); //an array of ball cordinates
+
+    // MOUSE....
+    let mouseHorizontalPosition = e.clientX;
+    let mouseVerticalPosition = e.clientY;
+
+    console.log({ mouseHorizontalPosition, mouseVerticalPosition });
+    console.log(profileBallCordinates);
+
+    // left of box
+    // width of box
+    // mouse cordinate
+
+    // left of all circles
+    // width of all circles
+  }
+
+  function handleProfileClick(e: MouseEvent<HTMLElement>) {
+    getCordinates(e);
+
+    return;
+    if (deg === 0) return handleWatchers(watcher);
+    setDeg(0);
+  }
+
   function bb() {
     window.history.back();
   }
 
-  const { watchersArray, deg } = handleWatchers(watcher);
+  useEffect(() => {
+    handleWatchers(watcher);
+  }, [watcher]);
+
+  // const { watchersArray } = handleWatchers(watcher);
 
   return (
-    <Wrapper className="red">
+    <Wrapper>
       <section>
         <div className="heading">
           <button type="button" onClick={bb}>
@@ -62,8 +124,8 @@ function WhoIsWatching() {
           <h1>Who's watching?</h1>
         </div>
 
-        <Container>
-          {watchersArray.map((watch, index) => {
+        <Container ref={containerRef} onClick={handleProfileClick}>
+          {watchersArray.map((watch: Watcher, index) => {
             return (
               <BallContainer
                 className={`${watchersArray.length === 1 ? "centerBall" : ""}`}
@@ -81,7 +143,7 @@ function WhoIsWatching() {
                     </button>
                   </BallBtn>
                 ) : (
-                  <Ball rotate={deg * index}>
+                  <Ball data-id="ball" rotate={deg * index}>
                     <div className="content">
                       <img src={watch.image} alt={watch.name} />
                       <p>{watch.name}</p>
@@ -155,6 +217,8 @@ const Container = styled.article`
   margin: 0 auto;
   overflow: hidden;
 
+  border: 2px solid red;
+
   @media screen and (min-width: 768px) {
     max-width: 600px;
   }
@@ -164,7 +228,8 @@ const BallContainer = styled.div<BallProp>`
   position: absolute;
   width: 80%;
   height: 80%;
-  /* border: 1px solid white; */
+  z-index: 1;
+  border: 1px solid white;
 
   &.centerBall {
     display: flex;
@@ -192,6 +257,7 @@ const Ball = styled.div<BallProp>`
     ); //reverse-rotate Ball
 
     position: relative;
+    z-index: 20;
     width: 100%;
     height: 100%;
     padding: 0;

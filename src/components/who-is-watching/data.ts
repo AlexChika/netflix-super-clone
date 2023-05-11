@@ -1,9 +1,4 @@
-const watchers: {
-  id: string;
-  name: string;
-  image: string;
-  addProfile?: boolean;
-}[] = [
+const watchers: Watcher[] = [
   {
     id: "1",
     name: "Oladotun",

@@ -3,6 +3,13 @@ type IconType = {
   color?: string;
 };
 
+type Watcher = {
+  id: string;
+  name: string;
+  image: string;
+  addProfile?: boolean;
+};
+
 type ThemeType = {
   primaryRed: string;
 };
