@@ -3,6 +3,8 @@ import styled from "styled-components";
 import watchers from "./data";
 import getImage from "../../utils/hooks/getImages";
 import { TiArrowBack } from "react-icons/ti";
+import ProfileInfoModal from "./ProfileInfoModal";
+import ManageWatchersModal from "./ManageWatchersModal";
 // import { useNavigation } from "react-router-dom";
 const { PlusIcon } = getImage();
 
@@ -27,13 +29,12 @@ type GetCordinatesReturnType = {
 
 function WhoIsWatching() {
   const [max_watchers] = useState(6);
-  const [watcher, setWatcher] = useState(2);
+  const [watcher, setWatcher] = useState(0);
   const [watchersArray, setWatchersArray] = useState<Watcher[]>([]);
   const [currentBall, setBall] = useState<null | HTMLElement>(null);
   const [deg, setDeg] = useState(0);
 
-  const containerRef = useRef<null | HTMLDivElement>(null);
-
+  // const containerRef = useRef<null | HTMLDivElement>(null);
   // const navigate = useNavigation();
 
   const handleAddProfile = () => {
@@ -112,10 +113,10 @@ function WhoIsWatching() {
 
     const nearestcodinate = circleCordinates.find((circle: CircleCordinate) => {
       if (
-        !(mouseCordinate.mouseHorizontalPosition - 20 < circle.left) &&
-        !(mouseCordinate.mouseHorizontalPosition + 20 > circle.right) &&
-        !(mouseCordinate.mouseVerticalPosition - 20 < circle.top) &&
-        !(mouseCordinate.mouseVerticalPosition + 20 > circle.bottom)
+        !(mouseCordinate.mouseHorizontalPosition - 25 < circle.left) &&
+        !(mouseCordinate.mouseHorizontalPosition + 25 > circle.right) &&
+        !(mouseCordinate.mouseVerticalPosition - 25 < circle.top) &&
+        !(mouseCordinate.mouseVerticalPosition + 25 > circle.bottom)
       ) {
         return circle;
       }
@@ -138,8 +139,7 @@ function WhoIsWatching() {
       return;
     }
 
-    if (!containerRef.current) return;
-    let container = containerRef.current;
+    let container = e.currentTarget;
 
     const profileCircles = [
       ...container.querySelectorAll<HTMLDivElement>(`[data-id="ball"]`),
@@ -177,7 +177,7 @@ function WhoIsWatching() {
           <h1>Who's watching?</h1>
         </div>
 
-        <Container ref={containerRef} onClick={handleProfileClick}>
+        <Container onClick={handleProfileClick}>
           {watchersArray.map((watch: Watcher, index) => {
             return (
               <BallContainer
@@ -208,6 +208,8 @@ function WhoIsWatching() {
           })}
         </Container>
       </section>
+      <ProfileInfoModal />
+      <ManageWatchersModal />
     </Wrapper>
   );
 }
