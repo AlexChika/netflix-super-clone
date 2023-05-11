@@ -10,10 +10,26 @@ type BallProp = {
   rotate: number;
 };
 
+type CircleCordinate = {
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
+};
+
+type GetCordinatesReturnType = {
+  circleCordinates: CircleCordinate[];
+  mouseCordinate: {
+    mouseHorizontalPosition: number;
+    mouseVerticalPosition: number;
+  };
+};
+
 function WhoIsWatching() {
   const [max_watchers] = useState(6);
   const [watcher, setWatcher] = useState(2);
   const [watchersArray, setWatchersArray] = useState<Watcher[]>([]);
+  const [currentBall, setBall] = useState<null | HTMLElement>(null);
   const [deg, setDeg] = useState(0);
 
   const containerRef = useRef<null | HTMLDivElement>(null);
@@ -56,7 +72,7 @@ function WhoIsWatching() {
     };
   }
 
-  function getCircleCodinate(element: HTMLDivElement) {
+  function getCircleCodinate(element: HTMLDivElement): CircleCordinate {
     const left = element.getBoundingClientRect().left;
     const right = element.getBoundingClientRect().right;
     const top = element.getBoundingClientRect().top;
@@ -70,37 +86,74 @@ function WhoIsWatching() {
     };
   }
 
-  function getCordinates(e: MouseEvent) {
-    if (!containerRef.current) return;
-    let container = containerRef.current;
-
-    const profileBalls = [
-      ...container.querySelectorAll<HTMLDivElement>(`[data-id="ball"]`),
-    ]; //all balls
-    const profileBallCordinates = profileBalls.map((ball: HTMLDivElement) => {
-      return getCircleCodinate(ball);
-    }); //an array of ball cordinates
+  function getCordinates(
+    e: MouseEvent,
+    circles: HTMLDivElement[]
+  ): GetCordinatesReturnType {
+    const circleCordinates = circles.map((circle: HTMLDivElement) => {
+      return getCircleCodinate(circle);
+    }); //an array of circle cordinates
 
     // MOUSE....
     let mouseHorizontalPosition = e.clientX;
     let mouseVerticalPosition = e.clientY;
 
-    console.log({ mouseHorizontalPosition, mouseVerticalPosition });
-    console.log(profileBallCordinates);
+    return {
+      circleCordinates,
+      mouseCordinate: { mouseHorizontalPosition, mouseVerticalPosition },
+    };
+  }
 
-    // left of box
-    // width of box
-    // mouse cordinate
+  function getNearestCirle(
+    cordinates: GetCordinatesReturnType,
+    circles: HTMLDivElement[]
+  ) {
+    const { circleCordinates, mouseCordinate } = cordinates;
 
-    // left of all circles
-    // width of all circles
+    const nearestcodinate = circleCordinates.find((circle: CircleCordinate) => {
+      if (
+        !(mouseCordinate.mouseHorizontalPosition - 20 < circle.left) &&
+        !(mouseCordinate.mouseHorizontalPosition + 20 > circle.right) &&
+        !(mouseCordinate.mouseVerticalPosition - 20 < circle.top) &&
+        !(mouseCordinate.mouseVerticalPosition + 20 > circle.bottom)
+      ) {
+        return circle;
+      }
+
+      return undefined;
+    });
+
+    const index = nearestcodinate && circleCordinates.indexOf(nearestcodinate);
+
+    const nearestElement =
+      typeof index === "undefined" ? undefined : circles[index];
+
+    return nearestElement;
   }
 
   function handleProfileClick(e: MouseEvent<HTMLElement>) {
-    getCordinates(e);
+    if (deg === 0) {
+      if (currentBall) currentBall.style.zIndex = "unset";
+      handleWatchers(watcher);
+      return;
+    }
 
-    return;
-    if (deg === 0) return handleWatchers(watcher);
+    if (!containerRef.current) return;
+    let container = containerRef.current;
+
+    const profileCircles = [
+      ...container.querySelectorAll<HTMLDivElement>(`[data-id="ball"]`),
+    ]; //all balls
+
+    const cordinates = getCordinates(e, profileCircles);
+
+    const ballClicked = getNearestCirle(cordinates, profileCircles);
+
+    if (!ballClicked) return;
+
+    const ballParent = ballClicked.parentElement;
+    ballParent!.style.zIndex = "15";
+    setBall(ballParent);
     setDeg(0);
   }
 
@@ -217,7 +270,7 @@ const Container = styled.article`
   margin: 0 auto;
   overflow: hidden;
 
-  border: 2px solid red;
+  /* border: 2px solid red; */
 
   @media screen and (min-width: 768px) {
     max-width: 600px;
@@ -229,7 +282,7 @@ const BallContainer = styled.div<BallProp>`
   width: 80%;
   height: 80%;
   z-index: 1;
-  border: 1px solid white;
+  /* border: 1px solid white; */
 
   &.centerBall {
     display: flex;
@@ -280,6 +333,10 @@ const Ball = styled.div<BallProp>`
       font-weight: 500;
       width: max-content;
       color: white;
+      background-color: ${({ rotate }: BallProp) =>
+        rotate === 0 ? "black" : "transparent"};
+      padding: 0px 30px;
+      z-index: 1;
     }
   }
 
