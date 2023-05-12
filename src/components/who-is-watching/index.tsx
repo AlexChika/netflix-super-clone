@@ -184,7 +184,7 @@ function WhoIsWatching() {
           <h1>Who's watching?</h1>
         </div>
 
-        <Container onClick={handleProfileClick}>
+        <Container rotate={deg} onClick={handleProfileClick}>
           {watchersArray.map((watch: Watcher, index) => {
             return (
               <BallContainer
@@ -274,7 +274,7 @@ const Wrapper = styled.main`
   }
 `;
 
-const Container = styled.article`
+const Container = styled.article<BallProp>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -284,8 +284,7 @@ const Container = styled.article`
   position: relative;
   padding: 0;
   margin: 0 auto;
-  overflow: hidden;
-  background: url(RedCircularDottedBg);
+  overflow: ${({ rotate }: BallProp) => (rotate === 0 ? "unset" : "hidden")};
 
   /* border: 2px solid red; */
 

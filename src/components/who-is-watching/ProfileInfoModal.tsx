@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import getImage from "../../utils/hooks/getImages";
 import { FaTimes } from "react-icons/fa";
-const { RedCircularDottedBg, BlackSlideBg } = getImage();
+import { MdDelete } from "react-icons/md";
+import { GiSpanner } from "react-icons/gi";
 
 type PropType = {
   show: boolean;
@@ -27,21 +27,37 @@ const ProfileInfoModal = ({ show }: PropType) => {
   return (
     <>
       {showModal && show && (
-        <Wrapper data-name="modal">
-          <Heading data-name="modal">
-            <h2 data-name="modal">Akinbode</h2>
+        <Wrapper>
+          <Heading>
+            <h2>Akinbode</h2>
 
-            <FaTimes data-name="modal" />
+            <FaTimes />
           </Heading>
 
-          <Form data-name="modal">
-            <div data-name="modal" className="form_input">
-              <label data-name="modal" htmlFor="">
-                Please enter secrete
-              </label>
-              <input data-name="modal" type="password" />
-            </div>
+          <Form>
+            <h3>Enter Your Pin </h3>
+            <small>
+              Profile is locked...Please enter your secrete pin to continue
+            </small>
+
+            <article className="form_input">
+              <input placeholder="please enter pin" type="password" />
+
+              <button type="submit">Continue</button>
+            </article>
           </Form>
+
+          <Footer>
+            <div>
+              <button>
+                <MdDelete /> &nbsp; Delete Profile
+              </button>
+
+              <button>
+                <GiSpanner /> &nbsp; Reset Pin
+              </button>
+            </div>
+          </Footer>
         </Wrapper>
       )}
     </>
@@ -62,10 +78,7 @@ const Wrapper = styled.div`
   height: auto;
   background-color: whitesmoke;
   border-radius: 10px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: space;
-
+  overflow: hidden;
   animation: openup 0.7s linear;
   transform-origin: top;
 
@@ -122,9 +135,76 @@ const Heading = styled.div`
 `;
 
 const Form = styled.form`
-  margin-top: 30px;
-  /* padding-top: 40px; */
+  padding: 0;
+  max-width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding-bottom: 10px;
+
+  h3 {
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: 500;
+  }
+
+  small {
+    color: gray;
+    width: 90%;
+  }
+
+  .form_input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    height: unset;
+  }
+
+  button {
+    width: 95px;
+    background-color: green;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 37px;
+  }
+
+  input {
+    width: calc(100% - 100px);
+    height: 37px;
+    border-radius: 10px;
+    border: 2px solid gray;
+    padding: 0px 10px;
+  }
+`;
+
+const Footer = styled.div`
   border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
-  /* background-color: rgba(255, 0, 0, 0.1); */
+  /* background-color: #dcdcdc; */
+  margin-top: 10px;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 10px 0px;
+  }
+
+  button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: gray;
+  }
+
+  button:first-of-type:hover {
+    color: red;
+  }
+
+  button:last-of-type:hover {
+    color: #562f88;
+  }
 `;
