@@ -12,4 +12,5 @@ type Watcher = {
 
 type ThemeType = {
   primaryRed: string;
+  bg: string;
 };

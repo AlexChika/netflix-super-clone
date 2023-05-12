@@ -1,7 +1,7 @@
-import React from "react";
+import Modal from "./ModalHOC";
 
 const ManageWatchersModal = () => {
-  return <div>ManageWatchersModal</div>;
+  return <Modal>ManageWatchersModal</Modal>;
 };
 
 export default ManageWatchersModal;

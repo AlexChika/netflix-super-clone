@@ -1,15 +1,17 @@
-import { useEffect, useState, useRef, MouseEvent } from "react";
+import { useEffect, useState, MouseEvent } from "react";
 import styled from "styled-components";
 import watchers from "./data";
 import getImage from "../../utils/hooks/getImages";
 import { TiArrowBack } from "react-icons/ti";
 import ProfileInfoModal from "./ProfileInfoModal";
-import ManageWatchersModal from "./ManageWatchersModal";
+
+// import ManageWatchersModal from "./ManageWatchersModal";
 // import { useNavigation } from "react-router-dom";
 const { PlusIcon } = getImage();
 
 type BallProp = {
   rotate: number;
+  deg?: number;
 };
 
 type CircleCordinate = {
@@ -113,10 +115,10 @@ function WhoIsWatching() {
 
     const nearestcodinate = circleCordinates.find((circle: CircleCordinate) => {
       if (
-        !(mouseCordinate.mouseHorizontalPosition - 25 < circle.left) &&
-        !(mouseCordinate.mouseHorizontalPosition + 25 > circle.right) &&
-        !(mouseCordinate.mouseVerticalPosition - 25 < circle.top) &&
-        !(mouseCordinate.mouseVerticalPosition + 25 > circle.bottom)
+        !(mouseCordinate.mouseHorizontalPosition - 15 < circle.left) &&
+        !(mouseCordinate.mouseHorizontalPosition + 15 > circle.right) &&
+        !(mouseCordinate.mouseVerticalPosition - 15 < circle.top) &&
+        !(mouseCordinate.mouseVerticalPosition + 15 > circle.bottom)
       ) {
         return circle;
       }
@@ -134,7 +136,7 @@ function WhoIsWatching() {
 
   function handleProfileClick(e: MouseEvent<HTMLElement>) {
     if (deg === 0) {
-      if (currentBall) currentBall.style.zIndex = "unset";
+      if (currentBall) currentBall.style.zIndex = "5";
       handleWatchers(watcher);
       return;
     }
@@ -152,7 +154,7 @@ function WhoIsWatching() {
     if (!ballClicked) return;
 
     const ballParent = ballClicked.parentElement;
-    ballParent!.style.zIndex = "15";
+    ballParent!.style.zIndex = "10";
     setBall(ballParent);
     setDeg(0);
   }
@@ -163,6 +165,7 @@ function WhoIsWatching() {
 
   useEffect(() => {
     handleWatchers(watcher);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [watcher]);
 
   // const { watchersArray } = handleWatchers(watcher);
@@ -196,10 +199,12 @@ function WhoIsWatching() {
                     </button>
                   </BallBtn>
                 ) : (
-                  <Ball data-id="ball" rotate={deg * index}>
+                  <Ball data-id="ball" deg={deg} rotate={deg * index}>
                     <div className="content">
                       <img src={watch.image} alt={watch.name} />
                       <p>{watch.name}</p>
+
+                      <ProfileInfoModal show={deg === 0} />
                     </div>
                   </Ball>
                 )}
@@ -208,8 +213,7 @@ function WhoIsWatching() {
           })}
         </Container>
       </section>
-      <ProfileInfoModal />
-      <ManageWatchersModal />
+      {/* <ManageWatchersModal /> */}
     </Wrapper>
   );
 }
@@ -256,6 +260,7 @@ const Wrapper = styled.main`
     button {
       position: absolute;
       left: 30px;
+      z-index: 5;
     }
   }
 `;
@@ -271,6 +276,7 @@ const Container = styled.article`
   padding: 0;
   margin: 0 auto;
   overflow: hidden;
+  background: url(RedCircularDottedBg);
 
   /* border: 2px solid red; */
 
@@ -283,7 +289,8 @@ const BallContainer = styled.div<BallProp>`
   position: absolute;
   width: 80%;
   height: 80%;
-  z-index: 1;
+  z-index: 5;
+
   /* border: 1px solid white; */
 
   &.centerBall {
@@ -311,8 +318,16 @@ const Ball = styled.div<BallProp>`
       ${({ rotate }: BallProp) => `${rotate}deg`}
     ); //reverse-rotate Ball
 
+    /* This flex stylings centers the p tag and the
+    ProfileInfoModal and eliminates the use of
+    left and transforms
+    */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /*.............................*/
+
     position: relative;
-    z-index: 20;
     width: 100%;
     height: 100%;
     padding: 0;
@@ -329,14 +344,19 @@ const Ball = styled.div<BallProp>`
     p {
       position: absolute;
       bottom: -25px;
-      left: 50%;
+
+      /*........................
+      the flex styling makes this unecessart
+       left: 50%;
       transform: translateX(-50%);
+      ....................... */
+
       font-size: 1.3rem;
       font-weight: 500;
       width: max-content;
       color: white;
-      background-color: ${({ rotate }: BallProp) =>
-        rotate === 0 ? "black" : "transparent"};
+      background-color: ${({ deg }: BallProp) =>
+        deg === 0 ? "black" : "transparent"};
       padding: 0px 30px;
       z-index: 1;
     }

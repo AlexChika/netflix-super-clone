@@ -16,6 +16,7 @@ import DownloadOfflineImage2 from "../../Assets/landing-page-two/download-offlin
 
 // who is watching
 import PlusIcon from "../../Assets/who-is-watching/plus-icon.png";
+import RedCircularDottedBg from "../../Assets/who-is-watching/circular-red-dotted-bg.png";
 
 function getImage() {
   return {
@@ -32,8 +33,10 @@ function getImage() {
     ChildrenProfileImage2,
     DownloadAnimationGif1,
     StrangerThingsImage1,
+
     //who is watching
     PlusIcon,
+    RedCircularDottedBg,
   };
 }
 
