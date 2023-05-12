@@ -17,6 +17,7 @@ import DownloadOfflineImage2 from "../../Assets/landing-page-two/download-offlin
 // who is watching
 import PlusIcon from "../../Assets/who-is-watching/plus-icon.png";
 import RedCircularDottedBg from "../../Assets/who-is-watching/circular-red-dotted-bg.png";
+import BlackSlideBg from "../../Assets/who-is-watching/black-slided-bg.jpg";
 
 function getImage() {
   return {
@@ -37,6 +38,7 @@ function getImage() {
     //who is watching
     PlusIcon,
     RedCircularDottedBg,
+    BlackSlideBg,
   };
 }
 

@@ -7,11 +7,10 @@ import ProfileInfoModal from "./ProfileInfoModal";
 
 // import ManageWatchersModal from "./ManageWatchersModal";
 // import { useNavigation } from "react-router-dom";
-const { PlusIcon } = getImage();
+const { PlusIcon, BlackSlideBg } = getImage();
 
 type BallProp = {
   rotate: number;
-  deg?: number;
 };
 
 type CircleCordinate = {
@@ -159,6 +158,11 @@ function WhoIsWatching() {
     setDeg(0);
   }
 
+  function closeModal() {
+    if (currentBall) currentBall.style.zIndex = "5";
+    handleWatchers(watcher);
+  }
+
   function bb() {
     window.history.back();
   }
@@ -199,7 +203,7 @@ function WhoIsWatching() {
                     </button>
                   </BallBtn>
                 ) : (
-                  <Ball data-id="ball" deg={deg} rotate={deg * index}>
+                  <Ball data-id="ball" rotate={deg * index}>
                     <div className="content">
                       <img src={watch.image} alt={watch.name} />
                       <p>{watch.name}</p>
@@ -222,6 +226,11 @@ export default WhoIsWatching;
 
 const Wrapper = styled.main`
   animation: fadeOut 1s linear;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(${BlackSlideBg});
+  background-position: center;
+  background-size: cover;
+  background-repeat: space;
 
   @keyframes fadeOut {
     from {
@@ -355,8 +364,6 @@ const Ball = styled.div<BallProp>`
       font-weight: 500;
       width: max-content;
       color: white;
-      background-color: ${({ deg }: BallProp) =>
-        deg === 0 ? "black" : "transparent"};
       padding: 0px 30px;
       z-index: 1;
     }
