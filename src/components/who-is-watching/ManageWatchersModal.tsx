@@ -18,7 +18,7 @@ const ManageWatchersModal = () => {
         const value = e.target.value.trim();
         const wrapper = e.target.parentElement;
 
-        if (value.length > 2) {
+        if (value.length > 3) {
           wrapper!.style.border = "1px solid #162c64";
           return;
         }
@@ -31,9 +31,35 @@ const ManageWatchersModal = () => {
   const handleAddProfile = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formdata = new FormData(e.currentTarget);
+    const inputs = [...e.currentTarget.querySelectorAll("input")];
+    const errorEl = [...e.currentTarget.querySelectorAll("small")];
+    let valid = true;
 
     const data = Object.fromEntries(formdata);
-    console.log(data);
+
+    inputs.forEach((input: HTMLInputElement, index) => {
+      let name = input.name;
+      if (data[name] === "") {
+        errorEl[index].textContent = `${name} cannot be blank`;
+        valid = false;
+      }
+
+      if (data[name].length < 4) {
+        errorEl[index].textContent = `${name} cannot be less than 4 chracters`;
+        valid = false;
+      }
+
+      if (name === "confirmPin" && data[name] !== data.profilePin) {
+        errorEl[index].textContent = "Password mismatch";
+        valid = false;
+      }
+    });
+
+    if (!valid) return;
+
+    errorEl.forEach((el: HTMLElement) => {
+      el.textContent = "";
+    });
   };
 
   return (
@@ -59,9 +85,10 @@ const ManageWatchersModal = () => {
             <label htmlFor="profileName">Profile name</label>
             <div>
               <input
+                autoComplete="off"
                 onChange={inputOnchange()}
                 required
-                name="profileName"
+                name="name"
                 id="profileName"
                 type="text"
               />
