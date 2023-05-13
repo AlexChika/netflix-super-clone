@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { Dispatch, ReactNode, SetStateAction } from "react";
 import styled from "styled-components";
 import { FaTimes } from "react-icons/fa";
 
@@ -8,21 +8,18 @@ type ModalWrapProp = {
 
 type ModalProp = {
   children: ReactNode;
+  modal: boolean;
+  showModal: Dispatch<SetStateAction<boolean>>;
 };
 
 const Modal = (props: ModalProp) => {
   // const { modal, setModal, children } = props;
-  const { children } = props;
-  let modal = true;
-
-  const setModal = (modal: boolean) => {
-    modal = false;
-  };
+  const { children, modal, showModal } = props;
 
   return (
     <ModalWrap modal={modal} className={` `}>
       <div className="modal_body">
-        <button onClick={() => setModal(!modal)} className="modal_btn">
+        <button onClick={() => showModal(!modal)} className="modal_btn">
           <FaTimes />
         </button>
         <div>{children}</div>

@@ -1,13 +1,19 @@
-import { ChangeEvent, FormEvent } from "react";
+import { ChangeEvent, Dispatch, FormEvent, SetStateAction } from "react";
 import styled from "styled-components";
 import Modal from "./ModalHOC";
 import getImage from "../../utils/hooks/getImages";
 import { BsFillPersonFill, BsFillShieldLockFill } from "react-icons/bs";
-import { error } from "console";
+import { GiPadlock } from "react-icons/gi";
 
 const { ModalAvatar } = getImage();
 
-const ManageWatchersModal = () => {
+type PropType = {
+  modal: boolean;
+  showModal: Dispatch<SetStateAction<boolean>>;
+};
+
+const ManageWatchersModal = (props: PropType) => {
+  const { modal, showModal } = props;
   const inputOnchange = () => {
     let timer: any;
 
@@ -63,7 +69,7 @@ const ManageWatchersModal = () => {
   };
 
   return (
-    <Modal>
+    <Modal modal={modal} showModal={showModal}>
       <Wrapper>
         <div className="img_wrapper f justify-center  items-center">
           <img
@@ -131,7 +137,7 @@ const ManageWatchersModal = () => {
                 type="password"
               />
               <span>
-                <BsFillShieldLockFill />
+                <GiPadlock />
               </span>
             </div>
             <small> </small>
@@ -144,7 +150,7 @@ const ManageWatchersModal = () => {
     </Modal>
   );
 };
-// inipagistudio;
+
 export default ManageWatchersModal;
 const Wrapper = styled.div`
   width: 95%;

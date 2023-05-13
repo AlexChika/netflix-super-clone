@@ -34,12 +34,14 @@ function WhoIsWatching() {
   const [watchersArray, setWatchersArray] = useState<Watcher[]>([]);
   const [currentBall, setBall] = useState<null | HTMLElement>(null);
   const [deg, setDeg] = useState(0);
+  const [modal, showModal] = useState(false); //add new profile
 
   // const containerRef = useRef<null | HTMLDivElement>(null);
   // const navigate = useNavigation();
 
   const handleAddProfile = () => {
     setWatcher(watcher + 1);
+    showModal(true);
   };
 
   function handleWatchers(index = 3) {
@@ -217,7 +219,7 @@ function WhoIsWatching() {
           })}
         </Container>
       </section>
-      <ManageWatchersModal />
+      <ManageWatchersModal modal={modal} showModal={showModal} />
     </Wrapper>
   );
 }
