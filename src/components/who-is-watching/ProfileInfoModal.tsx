@@ -14,16 +14,42 @@ const ProfileInfoModal = (props: PropType) => {
   const { show, reCircleBall } = props;
   const [showModal, setShowModal] = useState(false);
 
+  const FormRef = useRef<null | HTMLDivElement>(null);
+  const ResetRef = useRef<null | HTMLDivElement>(null);
+  const DeleteRef = useRef<null | HTMLDivElement>(null);
+
   const handleCloseModal = () => {
+    resetSubModal();
     setShowModal(false);
     reCircleBall();
   };
 
-  // const openDelete;
+  const openSubModal = (name: string) => {
+    if (!ResetRef.current || !DeleteRef.current) return;
 
-  const FormRef = useRef<null | HTMLDivElement>(null);
-  const ResetRef = useRef<null | HTMLDivElement>(null);
-  const DeleteRef = useRef<null | HTMLDivElement>(null);
+    const scroll = (element: HTMLDivElement) => {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      });
+    };
+
+    if (name === "reset") {
+      scroll(ResetRef.current);
+    }
+    if (name === "delete") {
+      scroll(DeleteRef.current);
+    }
+  }; //delete and reset modal pages
+  const resetSubModal = () => {
+    if (!FormRef.current) return;
+    FormRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "center",
+    });
+  }; // reset back to enter pin modal page
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -71,7 +97,7 @@ const ProfileInfoModal = (props: PropType) => {
               </small>
               <div className="button_wrap">
                 <button type="submit">Delete</button>
-                <button type="button" onClick={handleCloseModal}>
+                <button type="button" onClick={resetSubModal}>
                   Cancel
                 </button>
               </div>
@@ -108,11 +134,11 @@ const ProfileInfoModal = (props: PropType) => {
 
           <Footer>
             <div>
-              <button>
+              <button onClick={() => openSubModal("delete")}>
                 <MdDelete /> &nbsp; Delete Profile
               </button>
 
-              <button>
+              <button onClick={() => openSubModal("reset")}>
                 <GiSpanner /> &nbsp; Reset Pin
               </button>
             </div>
