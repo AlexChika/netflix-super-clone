@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { FaTimes } from "react-icons/fa";
@@ -6,11 +7,23 @@ import { GiSpanner } from "react-icons/gi";
 
 type PropType = {
   show: boolean;
+  reCircleBall: () => void;
 };
 
-const ProfileInfoModal = ({ show }: PropType) => {
+const ProfileInfoModal = (props: PropType) => {
+  const { show, reCircleBall } = props;
   const [showModal, setShowModal] = useState(false);
-  // const wrapperRef = useRef<null | HTMLDivElement>(null);
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    reCircleBall();
+  };
+
+  // const openDelete;
+
+  const FormRef = useRef<null | HTMLDivElement>(null);
+  const ResetRef = useRef<null | HTMLDivElement>(null);
+  const DeleteRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -31,21 +44,67 @@ const ProfileInfoModal = ({ show }: PropType) => {
           <Heading>
             <h2>Akinbode</h2>
 
-            <FaTimes />
+            <FaTimes onClick={handleCloseModal} />
           </Heading>
 
-          <Form>
-            <h3>Enter Your Pin </h3>
-            <small>
-              Profile is locked...Please enter your secrete pin to continue
-            </small>
+          <Body className="hide__scroll__bar">
+            <Form ref={FormRef}>
+              <h3>Enter Your Pin </h3>
+              <small>
+                Profile is locked...Please enter your secrete pin to continue
+              </small>
 
-            <article className="form_input">
-              <input placeholder="please enter pin" type="password" />
+              <article className="form_input">
+                <input placeholder="please enter pin" type="password" />
 
-              <button type="submit">Continue</button>
-            </article>
-          </Form>
+                <button type="submit">Continue</button>
+              </article>
+            </Form>
+
+            <Delete ref={DeleteRef}>
+              <span>
+                <MdDelete />
+              </span>
+              <h3>Are You sure?</h3>
+              <small>
+                After deletion, there is no going back. All data will be lost
+              </small>
+              <div className="button_wrap">
+                <button type="submit">Delete</button>
+                <button type="button" onClick={handleCloseModal}>
+                  Cancel
+                </button>
+              </div>
+            </Delete>
+
+            <Reset ref={ResetRef}>
+              <h3>Reset pin</h3>
+
+              <form>
+                <article>
+                  <label htmlFor="oldPin">Old Pin</label>
+                  <input
+                    name="old pin"
+                    id="oldPin"
+                    placeholder="please enter pin"
+                    type="text"
+                  />
+                </article>
+
+                <article>
+                  <label htmlFor="newPin">new pin</label>
+                  <input
+                    name="new pin"
+                    id="newPin"
+                    placeholder="please enter pin"
+                    type="text"
+                  />
+                </article>
+
+                <button type="submit">Continue</button>
+              </form>
+            </Reset>
+          </Body>
 
           <Footer>
             <div>
@@ -74,13 +133,19 @@ const Wrapper = styled.div`
   transform: scale(1);
   color: black;
   max-width: 95vw;
-  width: min(360px, 95vw);
+  width: min(380px, 95vw);
   height: auto;
   background-color: whitesmoke;
   border-radius: 10px;
   overflow: hidden;
   animation: openup 0.7s linear;
   transform-origin: top;
+  background: linear-gradient(
+    to right,
+    #162c64,
+    65%,
+    ${({ theme }: { theme: ThemeType }) => theme.primaryRed}
+  );
 
   @keyframes openup {
     0% {
@@ -105,6 +170,8 @@ const Heading = styled.div`
     width: max-content;
     font-style: italic;
     padding-top: 3px;
+    color: #162c64;
+    color: whitesmoke;
   }
 
   h2:after {
@@ -129,28 +196,84 @@ const Heading = styled.div`
   }
 
   svg {
-    color: ${({ theme }: { theme: ThemeType }) => theme.primaryRed};
     font-size: 2.5rem;
+    color: #162c64;
+    cursor: pointer;
+    transition: color 0.3s linear;
+  }
+
+  svg:hover {
+    color: whitesmoke;
   }
 `;
 
-const Form = styled.form`
-  padding: 0;
+const Body = styled.div`
   max-width: 90%;
   margin: 0 auto;
-  margin-top: 20px;
-  padding-bottom: 10px;
 
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  /* general styles for all elements wrapped by body */
   h3 {
     text-align: center;
-    font-size: 1.7rem;
-    font-weight: 500;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: whitesmoke;
   }
 
   small {
-    color: gray;
+    color: whitesmoke;
+    opacity: 0.75;
     width: 90%;
+    margin: 0 auto;
+    display: block;
+    padding: 7px 0px;
   }
+`;
+
+const Delete = styled.div`
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  span {
+    font-size: 4rem;
+    color: ${({ theme }: { theme: ThemeType }) => theme.primaryRed};
+  }
+
+  .button_wrap {
+    display: flex;
+    gap: 10px;
+    margin-top: 7px;
+  }
+
+  button {
+    width: 100px;
+    background: linear-gradient(whitesmoke, #162c64);
+    color: #162c64;
+    border-radius: 10px;
+    color: whitesmoke;
+    height: 37px;
+    transition: all 0.3s linear;
+  }
+
+  button:hover {
+    color: #162c64;
+  }
+
+  button:first-of-type {
+    background: ${({ theme }: { theme: ThemeType }) => theme.primaryRed};
+  }
+`;
+
+const Form = styled.div`
+  min-width: 100%;
+  padding: 15px 0px;
+  margin-top: 20px;
 
   .form_input {
     display: flex;
@@ -162,27 +285,92 @@ const Form = styled.form`
 
   button {
     width: 95px;
-    background-color: green;
+    background: linear-gradient(whitesmoke, #162c64);
+    color: #162c64;
     border-radius: 10px;
-    color: white;
+    color: whitesmoke;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 37px;
+    transition: all 0.3s linear;
+  }
+
+  button:hover {
+    color: #162c64;
   }
 
   input {
     width: calc(100% - 100px);
     height: 37px;
     border-radius: 10px;
-    border: 2px solid gray;
+    border: 2px solid whitesmoke;
+    color: whitesmoke;
     padding: 0px 10px;
+
+    &::placeholder {
+      color: whitesmoke;
+    }
+  }
+`;
+
+const Reset = styled.div`
+  text-align: left;
+  min-width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  article {
+    margin: 10px 0px;
+    display: flex;
+    align-items: center;
+  }
+
+  label {
+    padding: 0px 10px;
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    color: whitesmoke;
+    width: max-content;
+  }
+
+  input {
+    flex: 1;
+    height: 37px;
+    border-radius: 10px;
+    background-color: rgba(3, 3, 3, 0.3);
+    color: whitesmoke;
+    padding: 0px 10px;
+    display: block;
+
+    &::placeholder {
+      color: gray;
+    }
+  }
+
+  button {
+    width: 100%;
+    background: linear-gradient(whitesmoke, #162c64);
+    color: #162c64;
+    border-radius: 10px;
+    color: whitesmoke;
+    height: 37px;
+    transition: all 0.3s linear;
+    display: block;
+    margin: 0 auto;
+  }
+
+  button:hover {
+    color: #162c64;
   }
 `;
 
 const Footer = styled.div`
   border-top: 1px solid gray;
-  /* background-color: #dcdcdc; */
   margin-top: 10px;
 
   div {
@@ -197,17 +385,12 @@ const Footer = styled.div`
     cursor: pointer;
     display: flex;
     align-items: center;
-    color: gray;
+    color: whitesmoke;
+    opacity: 0.75;
   }
 
-  button:first-of-type:hover {
-    color: red;
-  }
-
-  button:last-of-type:hover {
-    color: #562f88;
+  button:hover {
+    color: white;
+    opacity: 1;
   }
 `;
-
-const Reset = styled.div``;
-const Delete = styled.div``;

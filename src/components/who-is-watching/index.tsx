@@ -137,8 +137,6 @@ function WhoIsWatching() {
 
   function handleProfileClick(e: MouseEvent<HTMLElement>) {
     if (deg === 0) {
-      if (currentBall) currentBall.style.zIndex = "5";
-      handleWatchers(watcher);
       return;
     }
 
@@ -160,7 +158,7 @@ function WhoIsWatching() {
     setDeg(0);
   }
 
-  function closeModal() {
+  function reCircleBall() {
     if (currentBall) currentBall.style.zIndex = "5";
     handleWatchers(watcher);
   }
@@ -210,7 +208,10 @@ function WhoIsWatching() {
                       <img src={watch.image} alt={watch.name} />
                       <p>{watch.name}</p>
 
-                      <ProfileInfoModal show={deg === 0} />
+                      <ProfileInfoModal
+                        reCircleBall={reCircleBall}
+                        show={deg === 0}
+                      />
                     </div>
                   </Ball>
                 )}
@@ -306,7 +307,6 @@ const BallContainer = styled.div<BallProp>`
   z-index: 5;
 
   /* border: 1px solid white; */
-
   &.centerBall {
     display: flex;
     justify-content: center;
