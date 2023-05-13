@@ -18,6 +18,10 @@ import DownloadOfflineImage2 from "../../Assets/landing-page-two/download-offlin
 import PlusIcon from "../../Assets/who-is-watching/plus-icon.png";
 import RedCircularDottedBg from "../../Assets/who-is-watching/circular-red-dotted-bg.png";
 import BlackSlideBg from "../../Assets/who-is-watching/black-slided-bg.jpg";
+import ModalAvatar from "../../Assets/who-is-watching/modal-avatar.png";
+import Television from "../../Assets/who-is-watching/television.png";
+import Kid from "../../Assets/who-is-watching/kid.png";
+import Kid2 from "../../Assets/who-is-watching/kid2.png";
 
 function getImage() {
   return {
@@ -39,6 +43,10 @@ function getImage() {
     PlusIcon,
     RedCircularDottedBg,
     BlackSlideBg,
+    ModalAvatar,
+    Television,
+    Kid,
+    Kid2,
   };
 }
 

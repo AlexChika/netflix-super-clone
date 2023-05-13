@@ -4,8 +4,8 @@ import watchers from "./data";
 import getImage from "../../utils/hooks/getImages";
 import { TiArrowBack } from "react-icons/ti";
 import ProfileInfoModal from "./ProfileInfoModal";
+import ManageWatchersModal from "./ManageWatchersModal";
 
-// import ManageWatchersModal from "./ManageWatchersModal";
 // import { useNavigation } from "react-router-dom";
 const { PlusIcon, BlackSlideBg } = getImage();
 
@@ -176,7 +176,7 @@ function WhoIsWatching() {
 
   return (
     <Wrapper>
-      <section>
+      <section className="section">
         <div className="heading">
           <button type="button" onClick={bb}>
             <TiArrowBack />
@@ -217,7 +217,7 @@ function WhoIsWatching() {
           })}
         </Container>
       </section>
-      {/* <ManageWatchersModal /> */}
+      <ManageWatchersModal />
     </Wrapper>
   );
 }
@@ -241,7 +241,7 @@ const Wrapper = styled.main`
     }
   }
 
-  section {
+  .section {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
@@ -289,6 +289,10 @@ const Container = styled.article<BallProp>`
   /* border: 2px solid red; */
 
   @media screen and (min-width: 768px) {
+    max-width: 550px;
+  }
+
+  @media screen and (min-width: 1200px) {
     max-width: 600px;
   }
 `;

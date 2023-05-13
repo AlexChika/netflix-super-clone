@@ -208,3 +208,6 @@ const Footer = styled.div`
     color: #562f88;
   }
 `;
+
+const Reset = styled.div``;
+const Delete = styled.div``;

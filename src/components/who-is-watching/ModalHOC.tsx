@@ -25,7 +25,7 @@ const Modal = (props: ModalProp) => {
         <button onClick={() => setModal(!modal)} className="modal_btn">
           <FaTimes />
         </button>
-        <div className="modal_content">{children}</div>
+        <div>{children}</div>
       </div>
     </ModalWrap>
   );
@@ -40,28 +40,23 @@ const ModalWrap = styled.div<ModalWrapProp>`
   bottom: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
-  background-color: transparent;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.6);
   display: ${({ modal }: ModalWrapProp) => (modal ? "block" : "none")};
-  /* background-color: white; */
-  /* border: 3px solid yellow; */
 
   /*  */
   .modal_body {
     position: relative;
-    max-width: 500px;
-    width: 100%;
-    aspect-ratio: 1/1;
+    max-width: 360px;
+    width: 95%;
     top: 50%;
     left: 50%;
     transform: translateX(-70%) translateY(-70%);
-    background: gray;
-    border-radius: 15px;
-    word-break: break-all;
-    /* word-wrap: break-word; */
+    background: whitesmoke;
+    border-radius: 10px;
+    /* word-break: break-all; */
     animation: modal 0.3s linear forwards;
-
-    border: 2px solid red;
+    word-wrap: break-word;
   }
 
   @keyframes modal {
@@ -77,16 +72,5 @@ const ModalWrap = styled.div<ModalWrapProp>`
     font-weight: 300;
     font-size: 2.5rem;
     color: ${({ theme }: { theme: ThemeType }) => theme.primaryRed};
-  }
-
-  .modal_content {
-    width: 100%;
-    padding: 0 0.7em 0.7em 0.7em;
-  }
-
-  @media screen and (min-width: 768px) {
-    .modal_body {
-      max-width: 600px;
-    }
   }
 `;
