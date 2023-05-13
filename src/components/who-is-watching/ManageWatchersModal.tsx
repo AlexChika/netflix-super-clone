@@ -1,11 +1,41 @@
+import { ChangeEvent, FormEvent } from "react";
 import styled from "styled-components";
 import Modal from "./ModalHOC";
 import getImage from "../../utils/hooks/getImages";
 import { BsFillPersonFill, BsFillShieldLockFill } from "react-icons/bs";
+import { error } from "console";
 
-const { RedCircularDottedBg, ModalAvatar } = getImage();
+const { ModalAvatar } = getImage();
 
 const ManageWatchersModal = () => {
+  const inputOnchange = () => {
+    let timer: any;
+
+    return (e: ChangeEvent<HTMLInputElement>) => {
+      clearTimeout(timer);
+
+      timer = setTimeout(() => {
+        const value = e.target.value.trim();
+        const wrapper = e.target.parentElement;
+
+        if (value.length > 2) {
+          wrapper!.style.border = "1px solid #162c64";
+          return;
+        }
+
+        wrapper!.style.border = "1px solid red";
+      }, 1000);
+    };
+  };
+
+  const handleAddProfile = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formdata = new FormData(e.currentTarget);
+
+    const data = Object.fromEntries(formdata);
+    console.log(data);
+  };
+
   return (
     <Modal>
       <Wrapper>
@@ -24,21 +54,36 @@ const ManageWatchersModal = () => {
           </p>
         </div>
 
-        <form>
+        <form onSubmit={handleAddProfile}>
           <FormInput>
             <label htmlFor="profileName">Profile name</label>
             <div>
-              <input name="profileName" id="profileName" type="text" />
+              <input
+                onChange={inputOnchange()}
+                required
+                name="profileName"
+                id="profileName"
+                type="text"
+              />
               <span>
                 <BsFillPersonFill />
               </span>
             </div>
-            <small>error text</small>
+            <small></small>
           </FormInput>
           <FormInput>
             <label htmlFor="profilePin">Secrete pin</label>
             <div>
-              <input name="profilePin" id="profilePin" type="password" />
+              <input
+                onChange={inputOnchange()}
+                required
+                autoComplete="current-password"
+                inputMode="numeric"
+                minLength={4}
+                name="profilePin"
+                id="profilePin"
+                type="password"
+              />
               <span>
                 <BsFillShieldLockFill />
               </span>
@@ -48,7 +93,16 @@ const ManageWatchersModal = () => {
           <FormInput>
             <label htmlFor="confirmPin">Confirm pin</label>
             <div>
-              <input name="confirmPin" id="confirmPin" type="password" />
+              <input
+                onChange={inputOnchange()}
+                required
+                autoComplete="current-password"
+                inputMode="numeric"
+                minLength={4}
+                name="confirmPin"
+                id="confirmPin"
+                type="password"
+              />
               <span>
                 <BsFillShieldLockFill />
               </span>
@@ -56,7 +110,7 @@ const ManageWatchersModal = () => {
             <small> </small>
           </FormInput>
           <FormInput>
-            <button>Create</button>
+            <button type="submit">Create</button>
           </FormInput>
         </form>
       </Wrapper>
