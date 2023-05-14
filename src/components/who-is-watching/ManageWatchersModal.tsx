@@ -39,14 +39,13 @@ const ManageWatchersModal = (props: PropType) => {
     const formdata = new FormData(e.currentTarget);
     const inputs = [...e.currentTarget.querySelectorAll("input")];
     const errorEl = [...e.currentTarget.querySelectorAll("small")];
+
     let valid = true;
-
-    const data = Object.fromEntries(formdata);
-    console.log(data);
-
     errorEl.forEach((el: HTMLElement) => {
       el.textContent = "";
-    });
+    }); // clear all errors at submit
+
+    const data = Object.fromEntries(formdata);
 
     inputs.forEach((input: HTMLInputElement, index) => {
       let name = input.name;
