@@ -35,8 +35,6 @@ function WhoIsWatching() {
   const [currentBall, setBall] = useState<null | HTMLElement>(null);
   const [deg, setDeg] = useState(0);
   const [modal, showModal] = useState(false); //add new profile
-
-  // const containerRef = useRef<null | HTMLDivElement>(null);
   // const navigate = useNavigation();
 
   const handleAddProfile = () => {
@@ -175,7 +173,7 @@ function WhoIsWatching() {
   // const { watchersArray } = handleWatchers(watcher);
 
   return (
-    <Wrapper>
+    <Wrapper rotate={deg}>
       <section className="section">
         <div className="heading">
           <button type="button" onClick={bb}>
@@ -227,7 +225,7 @@ function WhoIsWatching() {
 
 export default WhoIsWatching;
 
-const Wrapper = styled.main`
+const Wrapper = styled.main<BallProp>`
   animation: fadeOut 1s linear;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url(${BlackSlideBg});

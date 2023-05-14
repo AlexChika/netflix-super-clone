@@ -42,20 +42,26 @@ const ManageWatchersModal = (props: PropType) => {
     let valid = true;
 
     const data = Object.fromEntries(formdata);
+    console.log(data);
+
+    errorEl.forEach((el: HTMLElement) => {
+      el.textContent = "";
+    });
 
     inputs.forEach((input: HTMLInputElement, index) => {
       let name = input.name;
-      if (data[name] === "") {
+      let value = input.value.trim();
+      if (value === "") {
         errorEl[index].textContent = `${name} cannot be blank`;
         valid = false;
       }
 
-      if (data[name].length < 4) {
+      if (value.length < 4) {
         errorEl[index].textContent = `${name} cannot be less than 4 chracters`;
         valid = false;
       }
 
-      if (name === "confirmPin" && data[name] !== data.profilePin) {
+      if (name === "confirmPin" && value !== data.profilePin) {
         errorEl[index].textContent = "Password mismatch";
         valid = false;
       }
@@ -63,9 +69,7 @@ const ManageWatchersModal = (props: PropType) => {
 
     if (!valid) return;
 
-    errorEl.forEach((el: HTMLElement) => {
-      el.textContent = "";
-    });
+    console.log("submitted");
   };
 
   return (

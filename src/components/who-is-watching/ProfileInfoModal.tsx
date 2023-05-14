@@ -49,7 +49,7 @@ const ProfileInfoModal = (props: PropType) => {
       block: "center",
       inline: "center",
     });
-  }; // reset back to enter pin modal page
+  }; // reset back "to enter pin" modal page
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -239,7 +239,7 @@ const Body = styled.div`
 
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: auto;
+  overflow-x: hidden;
 
   /* general styles for all elements wrapped by body */
   h3 {
