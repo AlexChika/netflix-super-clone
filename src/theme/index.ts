@@ -1,7 +1,6 @@
-import { createGlobalStyle } from "styled-components";
-
+import { DefaultTheme, createGlobalStyle } from "styled-components";
 // few colors are not here beacuse they were used scantly
-const theme: ThemeType = {
+const theme: DefaultTheme = {
   primaryRed: "#e50914",
   bg: "#000000",
 };

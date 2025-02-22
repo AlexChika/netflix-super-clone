@@ -8,14 +8,14 @@ type Faq = {
 };
 
 type AnswerProp = {
-  height?: string;
-  bg?: string;
+  $height?: string;
+  $bg?: string;
 };
 
 type QuestionProp = {
-  show?: boolean;
-  bg?: string;
-  hover?: string;
+  $show?: boolean;
+  $bg?: string;
+  $hover?: string;
 };
 
 type FaqProps = {
@@ -47,9 +47,9 @@ function Fags({ faq: { question, answer }, bg, hover }: FaqProps) {
   return (
     <FagsWrapper>
       <Question
-        show={show}
-        bg={bg}
-        hover={hover}
+        $show={show}
+        $bg={bg}
+        $hover={hover}
         onClick={() => setShow(!show)}
       >
         <p>{question}</p>
@@ -59,7 +59,7 @@ function Fags({ faq: { question, answer }, bg, hover }: FaqProps) {
         </span>
       </Question>
 
-      <Answer height={height} bg={bg} className={show ? "show" : "hide"}>
+      <Answer $height={height} $bg={bg} className={show ? "show" : "hide"}>
         <p ref={ParagraphRef}>{answer}</p>
       </Answer>
     </FagsWrapper>
@@ -74,11 +74,11 @@ const Question = styled.div<QuestionProp>`
   align-items: center;
   height: 60px;
   padding: 7px 15px;
-  background-color: ${({ bg }: QuestionProp) => bg};
+  background-color: ${({ $bg }: QuestionProp) => $bg};
   margin-bottom: 1px;
   transition: background-color 0.2s linear;
   &:hover {
-    background-color: ${({ hover }: QuestionProp) => hover};
+    background-color: ${({ $hover }: QuestionProp) => $hover};
   }
 
   p,
@@ -100,8 +100,8 @@ const Question = styled.div<QuestionProp>`
     padding: 5px;
     cursor: pointer;
     transition: transform 0.25s linear;
-    transform: ${({ show }: QuestionProp) =>
-      show ? `rotate(45deg)` : `rotate(0)`};
+    transform: ${({ $show }: QuestionProp) =>
+      $show ? `rotate(45deg)` : `rotate(0)`};
   }
 
   .icon {
@@ -120,7 +120,7 @@ const Question = styled.div<QuestionProp>`
 `;
 
 const Answer = styled.div<AnswerProp>`
-  background-color: ${({ bg }: AnswerProp) => bg};
+  background-color: ${({ $bg }: AnswerProp) => $bg};
   overflow: hidden;
   transition: height 0.3s linear, padding 0.3s linear;
 
@@ -134,7 +134,7 @@ const Answer = styled.div<AnswerProp>`
   }
 
   &.show {
-    height: ${({ height }: AnswerProp) => height};
+    height: ${({ $height }: AnswerProp) => $height};
     padding: 10px 15px;
 
     p {

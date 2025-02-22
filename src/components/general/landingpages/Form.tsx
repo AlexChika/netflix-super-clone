@@ -5,7 +5,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 import styled from "styled-components";
 
 type DataProp = {
-  data: {
+  $data: {
     inputEmail: string;
     isEmailValid: { valid: boolean; errorText: string };
     btnAlign: "center" | "flex-start";
@@ -43,7 +43,7 @@ const Form = ({ btnAlign = "flex-start" }: FormProp) => {
   }
 
   return (
-    <FormWrapper data={{ inputEmail, isEmailValid, btnAlign }}>
+    <FormWrapper $data={{ inputEmail, isEmailValid, btnAlign }}>
       <div className="input">
         <p>Email address</p>
         <input
@@ -86,8 +86,8 @@ const FormWrapper = styled.form<DataProp>`
       left: 15px;
       color: rgba(255, 255, 255, 0.8);
       transition: all 0.3s linear;
-      visibility: ${({ data }: DataProp) =>
-        data.inputEmail ? "hidden" : "visible"};
+      visibility: ${({ $data }: DataProp) =>
+        $data.inputEmail ? "hidden" : "visible"};
     }
 
     input {
@@ -107,9 +107,9 @@ const FormWrapper = styled.form<DataProp>`
       display: flex;
       align-items: center;
       font-size: 14px;
-      color: ${({ theme }: { theme: ThemeType }) => theme.primaryRed};
-      visibility: ${({ data }: DataProp) =>
-        data.isEmailValid.valid ? "hidden" : "visible"};
+      color: ${({ theme }) => theme.primaryRed};
+      visibility: ${({ $data }: DataProp) =>
+        $data.isEmailValid.valid ? "hidden" : "visible"};
     }
   }
 
@@ -121,8 +121,8 @@ const FormWrapper = styled.form<DataProp>`
   }
 
   button {
-    align-self: ${({ data: { btnAlign } }: DataProp) => btnAlign};
-    background-color: ${({ theme }: { theme: ThemeType }) => theme.primaryRed};
+    align-self: ${({ $data: { btnAlign } }: DataProp) => btnAlign};
+    background-color: ${({ theme }) => theme.primaryRed};
     color: inherit;
     width: 160px;
     margin-top: 10px;

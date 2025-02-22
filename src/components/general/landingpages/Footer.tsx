@@ -3,7 +3,7 @@ import { FaUserTie, FaBloggerB } from "react-icons/fa";
 import { GrStackOverflow } from "react-icons/gr";
 import { SlGlobe, SlSocialInstagram } from "react-icons/sl";
 import { MdOutlineApps, MdAddIcCall } from "react-icons/md";
-import { GoPrimitiveDot } from "react-icons/go";
+import { RxDotFilled } from "react-icons/rx";
 import { IoCall } from "react-icons/io5";
 import {
   SiJavascript,
@@ -13,13 +13,9 @@ import {
   SiReact,
 } from "react-icons/si";
 
-type FooterProp = {
-  bg: string;
-};
-
 const Footer = ({ bg = "rgba(0, 8, 29, 1)" }: { bg?: string }) => {
   return (
-    <Wrapper bg={bg}>
+    <Wrapper $bg={bg}>
       <div className="content">
         {/* heading */}
         <p>
@@ -37,19 +33,19 @@ const Footer = ({ bg = "rgba(0, 8, 29, 1)" }: { bg?: string }) => {
               </span>
               <span>
                 <small>
-                  <GoPrimitiveDot />
+                  <RxDotFilled />
                 </small>
                 <a href="https://alex.devarise.tech">Alex Chika</a>
               </span>
               <span>
                 <small>
-                  <GoPrimitiveDot />
+                  <RxDotFilled />
                 </small>
                 <a href="https://alex.devarise.tech">JavaScript Dev</a>
               </span>
               <span>
                 <small>
-                  <GoPrimitiveDot />
+                  <RxDotFilled />
                 </small>
                 <a href="https://alex.devarise.tech">Flutter dev</a>
               </span>
@@ -150,8 +146,8 @@ const Footer = ({ bg = "rgba(0, 8, 29, 1)" }: { bg?: string }) => {
 
 export default Footer;
 
-const Wrapper = styled.div<FooterProp>`
-  background-color: ${({ bg }: FooterProp) => bg};
+const Wrapper = styled.div<{ $bg: string }>`
+  background-color: ${({ $bg }) => $bg};
   color: rgba(255, 255, 255, 0.7);
   padding: 50px 20px;
 
