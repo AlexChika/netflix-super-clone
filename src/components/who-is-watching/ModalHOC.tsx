@@ -1,4 +1,4 @@
-import React, { Dispatch, ReactNode, SetStateAction } from "react";
+import type { Dispatch, ReactNode, SetStateAction } from "react";
 import styled from "styled-components";
 import { FaTimes } from "react-icons/fa";
 
@@ -68,6 +68,6 @@ const ModalWrap = styled.div<ModalWrapProp>`
     top: 20px;
     font-weight: 300;
     font-size: 2.5rem;
-    color: ${({ theme }: { theme: ThemeType }) => theme.primaryRed};
+    color: ${({ theme }) => theme.primaryRed};
   }
 `;

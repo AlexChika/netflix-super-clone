@@ -1,1 +1,1 @@
-import firebaseConfig from "./config";
+// import firebaseConfig from "./config";

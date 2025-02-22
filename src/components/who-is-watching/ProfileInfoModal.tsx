@@ -170,7 +170,7 @@ const Wrapper = styled.div`
     to right,
     #162c64,
     65%,
-    ${({ theme }: { theme: ThemeType }) => theme.primaryRed}
+    ${({ theme }) => theme.primaryRed}
   );
 
   @keyframes openup {
@@ -268,7 +268,7 @@ const Delete = styled.div`
 
   span {
     font-size: 4rem;
-    color: ${({ theme }: { theme: ThemeType }) => theme.primaryRed};
+    color: ${({ theme }) => theme.primaryRed};
   }
 
   .button_wrap {
@@ -292,7 +292,7 @@ const Delete = styled.div`
   }
 
   button:first-of-type {
-    background: ${({ theme }: { theme: ThemeType }) => theme.primaryRed};
+    background: ${({ theme }) => theme.primaryRed};
   }
 `;
 

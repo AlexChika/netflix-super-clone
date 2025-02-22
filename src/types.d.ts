@@ -1,11 +1,3 @@
-export * from "styled-components";
-declare module "styled-components" {
-  export interface DefaultTheme {
-    primaryRed: string;
-    bg: string;
-  }
-}
-
 type IconType = {
   class?: string;
   color?: string;

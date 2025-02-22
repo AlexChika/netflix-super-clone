@@ -29,7 +29,7 @@ const Wrapper = styled.nav`
   }
 
   button {
-    background-color: ${({ theme }: { theme: ThemeType }) => theme.primaryRed};
+    background-color: ${({ theme }) => theme.primaryRed};
     border-radius: 4px;
     padding: 8px 15px;
     color: inherit;

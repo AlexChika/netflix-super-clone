@@ -1,5 +1,3 @@
-import React from "react";
-
 const NetflixIcon = ({ class: cs, color }: IconType) => {
   return (
     <svg

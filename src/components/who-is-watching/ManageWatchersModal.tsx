@@ -208,7 +208,7 @@ const FormInput = styled.div`
   }
 
   small {
-    color: ${({ theme }: { theme: ThemeType }) => theme.primaryRed};
+    color: ${({ theme }) => theme.primaryRed};
   }
 
   span {
@@ -238,7 +238,7 @@ const FormInput = styled.div`
       to right,
       #162c64,
       65%,
-      ${({ theme }: { theme: ThemeType }) => theme.primaryRed}
+      ${({ theme }) => theme.primaryRed}
     );
   }
 `;
